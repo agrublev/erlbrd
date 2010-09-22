@@ -22,9 +22,9 @@ public class main extends Activity implements OnClickListener {
         alarmButton.setOnClickListener(this);
         settingsButton = (Button) findViewById(R.id.viewSettings);
         settingsButton.setOnClickListener(this);
-        calendarButton = (Button) findViewById(R.id.viewCalendar);
+        calendarButton = findViewById(R.id.viewCalendar);
         calendarButton.setOnClickListener(this);
-        testButton = (Button) findViewById(R.id.viewTestAlarm);
+        testButton = findViewById(R.id.viewTestAlarm);
         testButton.setOnClickListener(this);
         tipsButton = (Button) findViewById(R.id.viewTipsAndTricks);
         tipsButton.setOnClickListener(this);
