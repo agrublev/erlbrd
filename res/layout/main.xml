@@ -2,11 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+    android:layout_height="fill_parent" android:background="#2175A7">
+
+<Button android:layout_height="wrap_content" android:text="Start Alarm" android:layout_gravity="center" android:id="@+id/startAlarm" android:typeface="normal" android:textStyle="bold" android:textSize="30sp" android:layout_width="250dp" android:padding="20dp" android:layout_marginTop="25dp" android:background="#FFFFFF">
+</Button>
+<Button android:layout_height="wrap_content" android:text="settings" android:textColor="#FFFFFF" android:layout_gravity="center" android:layout_width="fill_parent" android:textSize="28sp" android:id="@+id/viewSettings" android:layout_marginTop="30dp" android:layout_marginBottom="30dp" android:background="#2175A7"></Button><Button android:layout_height="wrap_content" android:textColor="#FFFFFF" android:layout_gravity="center" android:layout_width="fill_parent" android:textSize="28sp" android:id="@+id/viewCalendar" android:text="calendar" android:layout_marginTop="25dp" android:layout_marginBottom="25dp" android:background="#2175A7"></Button><Button android:layout_height="wrap_content" android:textColor="#FFFFFF" android:layout_gravity="center" android:layout_width="fill_parent" android:textSize="28sp" android:id="@+id/viewTestAlarm" android:text="test alarm" android:layout_marginBottom="25dp" android:layout_marginTop="25dp" android:background="#2175A7"></Button><Button android:layout_height="wrap_content" android:textColor="#FFFFFF" android:layout_gravity="center" android:layout_width="fill_parent" android:textSize="28sp" android:id="@+id/viewTipsAndTricks" android:text="tips &amp; tricks" android:layout_marginBottom="25dp" android:layout_marginTop="25dp" android:background="#2175A7"></Button>
 </LinearLayout>
