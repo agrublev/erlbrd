@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:background="#2175A7">
+<TextView android:layout_height="wrap_content" android:id="@+id/tipsTitle" android:text="Tips &amp; Tricks" android:textColor="#FFFFFF" android:textSize="24sp" android:layout_gravity="center_horizontal" android:paddingLeft="70dp" android:paddingRight="70dp" android:layout_width="fill_parent" android:paddingTop="20dp" android:paddingBottom="10dp"></TextView><TextView android:layout_height="wrap_content" android:id="@+id/textViewTips" android:text="1. Make sure your phone is plugged in throughout the night." android:textColor="#FFFFFF" android:textSize="12sp" android:layout_width="fill_parent" android:width="200dp" android:padding="15dp"></TextView><TextView android:layout_height="wrap_content" android:id="@+id/textViewTips" android:textColor="#FFFFFF" android:textSize="12sp" android:layout_width="fill_parent" android:width="200dp" android:padding="15dp" android:text="2. Be sure to have your phone at the right volume before you go to sleep."></TextView><TextView android:layout_height="wrap_content" android:id="@+id/textViewTips" android:textColor="#FFFFFF" android:textSize="12sp" android:layout_width="fill_parent" android:width="200dp" android:padding="15dp" android:text="3. Do not put the phone under your pillow. Place it at the top corner of your bed."></TextView>
+
+
+
 </LinearLayout>
