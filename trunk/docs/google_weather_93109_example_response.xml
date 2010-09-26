@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml_api_reply
+	version="1">
+	<weather
+		module_id="0"
+		tab_id="0"
+		mobile_row="0"
+		mobile_zipped="1"
+		row="0"
+		section="0">
+		<forecast_information>
+			<city
+				data="Santa Barbara, CA" />
+			<postal_code
+				data="93109" />
+			<latitude_e6
+				data="" />
+			<longitude_e6
+				data="" />
+			<forecast_date
+				data="2010-07-25" />
+			<current_date_time
+				data="2010-07-26 00:11:02 +0000" />
+			<unit_system
+				data="US" />
+		</forecast_information>
+		<current_conditions>
+			<condition
+				data="Partly Cloudy" />
+			<temp_f
+				data="65" />
+			<temp_c
+				data="18" />
+			<humidity
+				data="Humidity: 72%" />
+			<icon
+				data="/ig/images/weather/partly_cloudy.gif" />
+			<wind_condition
+				data="Wind: W at 10 mph" />
+		</current_conditions>
+		<forecast_conditions>
+			<day_of_week
+				data="Sun" />
+			<low
+				data="58" />
+			<high
+				data="69" />
+			<icon
+				data="/ig/images/weather/partly_cloudy.gif" />
+			<condition
+				data="Partly Cloudy" />
+		</forecast_conditions>
+		<forecast_conditions>
+			<day_of_week
+				data="Mon" />
+			<low
+				data="57" />
+			<high
+				data="68" />
+			<icon
+				data="/ig/images/weather/partly_cloudy.gif" />
+			<condition
+				data="Partly Cloudy" />
+		</forecast_conditions>
+		<forecast_conditions>
+			<day_of_week
+				data="Tue" />
+			<low
+				data="57" />
+			<high
+				data="67" />
+			<icon
+				data="/ig/images/weather/partly_cloudy.gif" />
+			<condition
+				data="Partly Cloudy" />
+		</forecast_conditions>
+		<forecast_conditions>
+			<day_of_week
+				data="Wed" />
+			<low
+				data="57" />
+			<high
+				data="66" />
+			<icon
+				data="/ig/images/weather/sunny.gif" />
+			<condition
+				data="Sunny" />
+		</forecast_conditions>
+	</weather>
+</xml_api_reply>
