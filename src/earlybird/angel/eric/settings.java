@@ -29,7 +29,7 @@ public class settings extends Activity implements OnClickListener {
         z.setOnItemSelectedListener(new MyOnItemSelectedListener());
         
         IntentButton backButton = (IntentButton) findViewById(R.id.backButton);
-        backButton.intent = new Intent(this, settings.class);
+        backButton.intent = new Intent(this, main.class);
         backButton.setOnClickListener(this);
     }
     
