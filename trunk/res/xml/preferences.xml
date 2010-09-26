@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:_="http://schemas.android.com/apk/res/android">
+	<EditTextPreference
+		_:defaultValue="93103"
+		_:title="Zip Code"
+		_:dialogTitle="Zip Code"
+		_:key="zip_code"
+		_:dialogMessage="Set  your zip code"></EditTextPreference>
+	<ListPreference
+		_:title="Alarm Sound"
+		_:summary="Choose an alarm sound"
+		_:key="alarm_sound"
+		_:defaultValue="1"
+		_:entries="@array/alarm_sounds"
+		_:entryValues="@array/alarm_sound_values" />
+<RingtonePreference
+		_:title="Ringtone"
+		_:summary="Choose a Ringtone"
+		_:key="alarm_sound"
+		_:defaultValue="1"
+		_:entries="@array/alarm_sounds"
+		_:entryValues="@array/alarm_sound_values" />
+</PreferenceScreen>
