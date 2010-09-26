@@ -3,5 +3,6 @@
     <string name="hello">Hello World, main!</string>
     <string name="app_name">earlybird</string>
 
-<string name="choose_song">Please Choose a Song</string>
+<string name="pick_time">Choose a Time Frame</string>
+<string name="pickalarm">Choose alarm</string>
 </resources>

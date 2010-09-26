@@ -9,7 +9,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ public class alarm extends Activity implements OnClickListener {
     private int mHour;
     private int mMinute;
 	private Button startAlarm;
+	private TextView alarmTitle;
 
     static final int TIME_DIALOG_ID = 0;
 	/** Called when the activity is first created. */
@@ -29,12 +32,19 @@ public class alarm extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alarm); 
         
-     // capture our View elements
+        // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
         mPickTime = (Button) findViewById(R.id.pickTime);
         startAlarm = (Button) findViewById(R.id.startAlarm);
         startAlarm.setOnClickListener(this);
 
+        Spinner s = (Spinner) findViewById(R.id.Spinner01);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                this, R.array.TimeFrames, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+        
+        
         // add a click listener to the button
         mPickTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

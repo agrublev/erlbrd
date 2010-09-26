@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="TimeFrames"><item>30 minutes</item>
+<item>40 minutes</item>
+<item>50 minutes</item>
+<item>60 minutes</item>
+<item>1.5 hours</item>
+<item>none</item>
+</string-array>
+</resources>
