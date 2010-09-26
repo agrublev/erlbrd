@@ -35,6 +35,11 @@
 			android:text="3. Do not put the phone under your pillow. Place it at the top corner of your bed."></TextView>
 	</LinearLayout>
 	
-
+<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<elements.IntentButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/backButton"
+			android:text="back"></elements.IntentButton>
+	</LinearLayout>
 
 </LinearLayout>

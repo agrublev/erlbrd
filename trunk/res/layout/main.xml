@@ -21,22 +21,19 @@
 		android:shadowRadius="0.3" android:textColor="#FFFFFF"
 		android:shadowColor="#09586d" android:layout_gravity="center"
 		android:layout_width="fill_parent" android:textSize="28sp"
-		android:id="@+id/settingsNavButton" android:layout_marginTop="30dp"
-		android:layout_marginBottom="30dp" android:background="@android:color/transparent"></elements.IntentButton>
+		android:id="@+id/settingsNavButton" android:background="@android:color/transparent" android:layout_marginBottom="20dp" android:layout_marginTop="20dp"></elements.IntentButton>
 	<elements.IntentButton android:layout_height="wrap_content"
 		android:shadowDx="-1.0" android:shadowDy="-1.0" android:shadowRadius="0.3"
 		android:textColor="#FFFFFF" android:shadowColor="#09586d"
 		android:layout_gravity="center" android:layout_width="fill_parent"
 		android:textSize="28sp" android:id="@+id/calendarNavButton"
-		android:text="calendar" android:layout_marginTop="20dp"
-		android:layout_marginBottom="20dp" android:background="@android:color/transparent"></elements.IntentButton>
+		android:text="calendar" android:background="@android:color/transparent" android:layout_marginBottom="20dp" android:layout_marginTop="20dp"></elements.IntentButton>
 	<elements.IntentButton android:layout_height="wrap_content"
 		android:shadowDx="-1.0" android:shadowDy="-1.0" android:shadowRadius="0.3"
 		android:textColor="#FFFFFF" android:shadowColor="#09586d"
 		android:layout_gravity="center" android:layout_width="fill_parent"
 		android:textSize="28sp" android:id="@+id/testNavButton" android:text="test alarm"
-		android:layout_marginBottom="25dp" android:layout_marginTop="25dp"
-		android:background="@android:color/transparent"></elements.IntentButton>
+		android:background="@android:color/transparent" android:layout_marginBottom="20dp" android:layout_marginTop="20dp"></elements.IntentButton>
 	<elements.IntentButton android:layout_height="wrap_content"
 		android:shadowDx="-1.0" android:shadowDy="-1.0" android:shadowRadius="0.3"
 		android:textColor="#FFFFFF" android:shadowColor="#09586d"
