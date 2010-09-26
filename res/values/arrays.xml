@@ -1,0 +1,149 @@
+<resources>
+	<string-array name="number_of_payers">
+		<item>1 Payer</item>
+		<item>2 Payers</item>
+		<item>3 Payers</item>
+		<item>4 Payers</item>
+		<item>5 Payers</item>
+		<item>6 Payers</item>
+		<item>7 Payers</item>
+		<item>8 Payers</item> 
+		<item>9 Payers</item>
+		<item>10 Payers</item>
+		<item>11 Payers</item>
+		<item>12 Payers</item>
+		<item>13 Payers</item>
+		<item>14 Payers</item>
+		<item>15 Payers</item>
+		<item>16 Payers</item>
+		<item>17 Payers</item>
+		<item>18 Payers</item>
+		<item>19 Payers</item>
+		<item>20 Payers</item>
+	</string-array>
+
+	<string-array name="percents">
+		<item>1% Tip</item>
+		<item>2% Tip</item>
+		<item>3% Tip</item>
+		<item>4% Tip</item>
+		<item>5% Tip</item>
+		<item>6% Tip</item>
+		<item>7% Tip</item>
+		<item>8% Tip</item>
+		<item>9% Tip</item>
+		<item>10% Tip</item>
+		<item>11% Tip</item>
+		<item>12% Tip</item>
+		<item>13% Tip</item>
+		<item>14% Tip</item>
+		<item>15% Tip</item>
+		<item>16% Tip</item>
+		<item>17% Tip</item>
+		<item>18% Tip</item>
+		<item>19% Tip</item>
+		<item>20% Tip</item>
+		<item>21% Tip</item>
+		<item>22% Tip</item>
+		<item>23% Tip</item>
+		<item>24% Tip</item>
+		<item>25% Tip</item>
+		<item>26% Tip</item>
+		<item>27% Tip</item>
+		<item>28% Tip</item>
+		<item>29% Tip</item>
+		<item>30% Tip</item>
+		<item>31% Tip</item>
+		<item>32% Tip</item>
+		<item>33% Tip</item>
+		<item>34% Tip</item>
+		<item>35% Tip</item>
+		<item>36% Tip</item>
+		<item>37% Tip</item>
+		<item>38% Tip</item>
+		<item>39% Tip</item>
+		<item>40% Tip</item>
+		<item>41% Tip</item>
+		<item>42% Tip</item>
+		<item>43% Tip</item>
+		<item>44% Tip</item>
+		<item>45% Tip</item>
+		<item>46% Tip</item>
+		<item>47% Tip</item>
+		<item>48% Tip</item>
+		<item>49% Tip</item>
+		<item>50% Tip</item>
+		<item>51% Tip</item>
+		<item>52% Tip</item>
+		<item>53% Tip</item>
+		<item>54% Tip</item>
+		<item>55% Tip</item>
+		<item>56% Tip</item>
+		<item>57% Tip</item>
+		<item>58% Tip</item>
+		<item>59% Tip</item>
+		<item>60% Tip</item>
+		<item>61% Tip</item>
+		<item>62% Tip</item>
+		<item>63% Tip</item>
+		<item>64% Tip</item>
+		<item>65% Tip</item>
+		<item>66% Tip</item>
+		<item>67% Tip</item>
+		<item>68% Tip</item>
+		<item>69% Tip</item>
+		<item>70% Tip</item>
+		<item>71% Tip</item>
+		<item>72% Tip</item>
+		<item>73% Tip</item>
+		<item>74% Tip</item>
+		<item>75% Tip</item>
+		<item>76% Tip</item>
+		<item>77% Tip</item>
+		<item>78% Tip</item>
+		<item>79% Tip</item>
+		<item>80% Tip</item>
+		<item>81% Tip</item>
+		<item>82% Tip</item>
+		<item>83% Tip</item>
+		<item>84% Tip</item>
+		<item>85% Tip</item>
+		<item>86% Tip</item>
+		<item>87% Tip</item>
+		<item>88% Tip</item>
+		<item>89% Tip</item>
+		<item>90% Tip</item>
+		<item>91% Tip</item>
+		<item>92% Tip</item>
+		<item>93% Tip</item>
+		<item>94% Tip</item>
+		<item>95% Tip</item>
+		<item>96% Tip</item>
+		<item>97% Tip</item>
+		<item>98% Tip</item>
+		<item>99% Tip</item>
+		<item>100% Tip</item>
+	</string-array>
+
+	<string-array name="alarm_sounds">
+		<item>Warm Breeze</item>
+		<item>Forest Glade</item>
+		<item>Morning Mist</item>
+		<item>Sunrise</item>
+		<item>Distant Memories</item>
+		<item>Nightingale</item>
+		<item>Urban Call</item>
+	</string-array>
+
+	<string-array name="alarm_sound_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+	</string-array>
+
+</resources>

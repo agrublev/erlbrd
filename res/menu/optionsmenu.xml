@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+	xmlns:_="http://schemas.android.com/apk/res/android">
+	<item
+		_:visible="true"
+		_:enabled="true"
+		_:icon="@android:drawable/ic_menu_preferences"
+		_:titleCondensed="Settings"
+		_:title="Settings"
+		_:id="@+id/settings"></item>
+</menu>
