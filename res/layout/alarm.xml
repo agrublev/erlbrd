@@ -1,20 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:background="#2175A7">
-<TextView android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textSize="24sp" android:layout_gravity="center_horizontal" android:paddingTop="20dp" android:paddingBottom="10dp" android:cursorVisible="true" android:layout_width="fill_parent" android:gravity="center" android:id="@+id/alarmTitle" android:text="Set Alarm"></TextView>
-<TextView android:id="@+id/timeDisplay"
-        android:layout_height="wrap_content"
-        android:text="" android:layout_width="fill_parent" android:textColor="#FFFFFF" android:gravity="center" android:layout_marginBottom="5dp"/>
-    <Button android:id="@+id/pickTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change the time" android:layout_gravity="center" android:background="#FFFFFF" android:padding="5dp"/>
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@drawable/background">
+	<TextView android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal" android:paddingTop="20dp"
+		android:paddingBottom="10dp" android:cursorVisible="true"
+		android:layout_width="fill_parent" android:id="@+id/alarmTitle"
+		android:text="Set Alarm" android:paddingLeft="15dp" android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="1.0" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d" android:textSize="36sp"></TextView>
+	<TextView android:id="@+id/timeDisplay" android:layout_height="wrap_content"
+		android:text="" android:layout_width="fill_parent" android:textColor="#FFFFFF"
+		android:gravity="center" android:layout_marginBottom="5dp" android:textSize="28sp"/>
+	<Button android:id="@+id/pickTime" android:text="Change the time"
+		android:layout_gravity="center" android:textColor="#3f5358"
+		android:paddingRight="20dp" android:paddingLeft="20dp"
+		android:background="#FFFFFF" android:textSize="14sp" android:layout_width="160dp" android:paddingTop="10dp" android:paddingBottom="10dp" android:layout_height="wrap_content"/>
 
 
+ 
 
+	<TextView android:id="@+id/TextView02" android:layout_height="wrap_content" android:text="How much earlier can we wake you up?" android:layout_width="fill_parent" android:textColor="#FFFFFF" android:padding="10dp"></TextView><Spinner android:id="@+id/Spinner01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:prompt="@string/pick_time" android:layout_gravity="center_horizontal|center"></Spinner><TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:stretchColumns="1"
+		android:layout_height="wrap_content" android:layout_gravity="bottom|center_horizontal|center"
+		android:background="#a0e0f1" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginTop="30dp">
 
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="match_parent" android:layout_height="fill_parent" android:layout_gravity="center" android:gravity="center_horizontal|center"><Button android:layout_height="wrap_content" android:id="@+id/startAlarm" android:text="Start Alarm" android:background="#FFFFFF" android:gravity="bottom|center" android:layout_width="wrap_content" android:layout_gravity="bottom|center" android:layout_marginBottom="20dp" android:paddingTop="10dp" android:paddingBottom="10dp" android:paddingLeft="40dp" android:paddingRight="40dp" android:textSize="30sp"></Button></LinearLayout>
+		<TableRow android:layout_marginBottom="20dp">
+
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Current alarm song:"
+				android:layout_column="1" android:textColor="#259abc"
+				android:padding="5dp"></TextView>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/currentSong"
+				android:text="Alarm Sound 1" android:layout_column="2"
+				android:textColor="#259abc" android:padding="5dp"></TextView>
+		</TableRow>
+		<TableRow android:layout_marginBottom="20dp">
+
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_column="1"
+				android:text="Last night you slept:" android:textColor="#259abc" android:padding="5dp"></TextView>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/currentSong"
+				android:layout_column="2" android:text="About 7.5 hours"
+				android:textColor="#259abc" android:padding="5dp"></TextView>
+		</TableRow>
+		<TableRow android:layout_marginBottom="10dp">
+
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_column="1"
+				android:text="Avarage sleep time:" android:textColor="#259abc" android:padding="5dp"></TextView>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/currentSong"
+				android:layout_column="2" android:text="8.25hours / night"
+				android:textColor="#259abc" android:padding="5dp"></TextView>
+		</TableRow>
+	</TableLayout>
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="match_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center" android:gravity="center_horizontal|center">
+		
+		<Button android:id="@+id/startAlarm" android:text="Start Alarm"
+			android:gravity="bottom|center" android:layout_width="wrap_content"
+			android:layout_gravity="bottom|center" android:paddingLeft="40dp"
+			android:paddingRight="40dp" android:textColorHint="#FFFFFF"
+			android:background="@drawable/button" android:textColor="#3f5358"
+			android:textSize="24sp" android:layout_height="60dp" android:paddingBottom="15dp" android:layout_marginBottom="10dp"></Button>
+	
+
+</LinearLayout>
+
+	
 
 </LinearLayout>

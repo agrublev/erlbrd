@@ -1,5 +1,6 @@
 package earlybird.angel.eric;
 
+import elements.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,40 +9,35 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class main extends Activity implements OnClickListener {
-    private Button tipsButton;
-	private Button settingsButton;
-	private View calendarButton;
-	private View testButton;
+
 	private Button alarmButton;
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main); 
-        alarmButton = (Button) findViewById(R.id.startAlarm);
-        alarmButton.setOnClickListener(this);
-        settingsButton = (Button) findViewById(R.id.viewSettings);
-        settingsButton.setOnClickListener(this);
-        calendarButton = findViewById(R.id.viewCalendar);
-        calendarButton.setOnClickListener(this);
-        testButton = findViewById(R.id.viewTestAlarm);
-        testButton.setOnClickListener(this);
-        tipsButton = (Button) findViewById(R.id.viewTipsAndTricks);
-        tipsButton.setOnClickListener(this);
-    
+        
+        IntentButton settingsNavButton = (IntentButton) findViewById(R.id.settingsNavButton);
+        settingsNavButton.intent = new Intent(this, settings.class);
+        settingsNavButton.setOnClickListener(this);
+        
+        IntentButton calendarNavButton = (IntentButton) findViewById(R.id.calendarNavButton);
+        calendarNavButton.intent = new Intent(this, calendar.class);
+        calendarNavButton.setOnClickListener(this);
+        
+        IntentButton testNavButton = (IntentButton) findViewById(R.id.testNavButton);
+        testNavButton.intent = new Intent(this, test.class);
+        testNavButton.setOnClickListener(this);
+        
+        IntentButton tipsNavButton = (IntentButton) findViewById(R.id.tipsNavButton);
+        tipsNavButton.intent = new Intent(this, tips.class);
+        tipsNavButton.setOnClickListener(this);
+        
     }
+    
     public void onClick(View v) {
-    	if (v == tipsButton) {
-            startActivity(new Intent(this, tips.class));
-    	} else if (v == settingsButton) {
-    		startActivity(new Intent(this, settings.class));
-    	} else if (v == calendarButton) {
-    		startActivity(new Intent(this, calendar.class));
-    	} else if (v == testButton) {
-    		startActivity(new Intent(this, test.class));
-    	} else if (v == alarmButton) {
-    		startActivity(new Intent(this, alarm.class));
-    	}
+    	IntentButton b = (IntentButton) v;
+    	startActivity(b.intent);
     }
     
 }
