@@ -38,10 +38,6 @@ public class EditPreferencesActivity extends PreferenceActivity implements OnPre
 		}
 	}
 
-	@Override
-	/**
-	 * Changes the summary property of the given preference.
-	 */
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
 		setPreferenceSummary(preference, newValue.toString());
 		return true;

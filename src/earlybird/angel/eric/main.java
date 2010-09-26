@@ -22,7 +22,7 @@ public class main extends Activity implements OnClickListener {
         alarmNavButton.setOnClickListener(this);
         
         IntentButton settingsNavButton = (IntentButton) findViewById(R.id.settingsNavButton);
-        settingsNavButton.intent = new Intent(this, settings.class);
+        settingsNavButton.intent = new Intent(this, EditPreferencesActivity.class);
         settingsNavButton.setOnClickListener(this);
         
         IntentButton calendarNavButton = (IntentButton) findViewById(R.id.calendarNavButton);
