@@ -10,11 +10,10 @@
 		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
 		android:shadowColor="#09586d" android:textSize="42sp"></TextView>
 	<elements.IntentButton android:layout_height="wrap_content"
-		android:layout_gravity="center" android:id="@+id/startAlarm"
-		android:typeface="normal" android:textStyle="bold" android:textSize="30sp"
+		android:layout_gravity="center" android:typeface="normal" android:textStyle="bold" android:textSize="30sp"
 		android:layout_width="250dp" android:padding="20dp"
 		android:layout_marginTop="25dp" android:background="@drawable/button"
-		android:text="Set Alarm">
+		android:text="Set Alarm" android:id="@+id/alarmNavButton">
 	</elements.IntentButton>
 	<elements.IntentButton android:layout_height="wrap_content"
 		android:text="settings" android:shadowDx="-1.0" android:shadowDy="-1.0"
