@@ -14,21 +14,9 @@ public class test extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calibration); 
         
-        IntentButton settingsNavButton = (IntentButton) findViewById(R.id.settingsNavButton);
-        settingsNavButton.intent = new Intent(this, settings.class);
-        settingsNavButton.setOnClickListener(this);
-        
-        IntentButton calendarNavButton = (IntentButton) findViewById(R.id.calendarNavButton);
-        calendarNavButton.intent = new Intent(this, calendar.class);
-        calendarNavButton.setOnClickListener(this);
-        
-        IntentButton testNavButton = (IntentButton) findViewById(R.id.testNavButton);
-        testNavButton.intent = new Intent(this, test.class);
-        testNavButton.setOnClickListener(this);
-        
-        IntentButton tipsNavButton = (IntentButton) findViewById(R.id.tipsNavButton);
-        tipsNavButton.intent = new Intent(this, tips.class);
-        tipsNavButton.setOnClickListener(this);
+        IntentButton backButton = (IntentButton) findViewById(R.id.backButton);
+        backButton.intent = new Intent(this, settings.class);
+        backButton.setOnClickListener(this);
     }
     
     public void onClick(View v) {
