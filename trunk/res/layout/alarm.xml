@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:background="@drawable/background">
+	android:layout_height="fill_parent" android:background="@drawable/background_ray">
 	<TextView android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal" android:paddingTop="20dp"
-		android:paddingBottom="10dp" android:cursorVisible="true"
-		android:layout_width="fill_parent" android:id="@+id/alarmTitle"
-		android:text="Set Alarm" android:paddingLeft="15dp" android:shadowDx="-1.0"
-		android:shadowDy="-1.0" android:shadowRadius="1.0" android:textColor="#FFFFFF"
-		android:shadowColor="#09586d" android:textSize="36sp"></TextView>
+			android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+			android:paddingBottom="10dp" android:cursorVisible="true"
+			android:layout_width="fill_parent" android:id="@+id/settingsTitle"
+			android:text="Set Alarm" android:paddingLeft="15dp" android:shadowDx="-1.0"
+			android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+			android:shadowColor="#09586d" android:textSize="42sp"></TextView>
 	<TextView android:id="@+id/timeDisplay" android:layout_height="wrap_content"
 		android:text="" android:layout_width="fill_parent" android:textColor="#FFFFFF"
 		android:gravity="center" android:layout_marginBottom="5dp" android:textSize="28sp"/>

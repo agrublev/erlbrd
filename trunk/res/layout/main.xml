@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:background="@drawable/background_grain">
-
-	<Button android:layout_height="wrap_content"
+	android:layout_height="fill_parent" android:background="@drawable/background_ray">
+	<TextView android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+		android:paddingBottom="10dp" android:cursorVisible="true"
+		android:layout_width="fill_parent" android:id="@+id/settingsTitle"
+		android:text="Early Bird" android:paddingLeft="15dp" android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d" android:textSize="42sp"></TextView>
+	<elements.IntentButton android:layout_height="wrap_content"
 		android:layout_gravity="center" android:id="@+id/startAlarm"
 		android:typeface="normal" android:textStyle="bold" android:textSize="30sp"
 		android:layout_width="250dp" android:padding="20dp"
 		android:layout_marginTop="25dp" android:background="@drawable/button"
 		android:text="Set Alarm">
-	</Button>
-	<Button android:layout_height="wrap_content" android:text="settings"
-		android:textColor="#FFFFFF" android:layout_gravity="center"
+	</elements.IntentButton>
+	<elements.IntentButton android:layout_height="wrap_content"
+		android:text="settings" android:shadowDx="-1.0" android:shadowDy="-1.0"
+		android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d" android:layout_gravity="center"
 		android:layout_width="fill_parent" android:textSize="28sp"
-		android:id="@+id/viewSettings" android:layout_marginTop="30dp"
-		android:layout_marginBottom="30dp" android:background="@android:color/transparent"></Button>
-	<Button android:layout_height="wrap_content" android:textColor="#FFFFFF"
+		android:id="@+id/settingsNavButton" android:layout_marginTop="30dp"
+		android:layout_marginBottom="30dp" android:background="@android:color/transparent"></elements.IntentButton>
+	<elements.IntentButton android:layout_height="wrap_content"
+		android:shadowDx="-1.0" android:shadowDy="-1.0" android:shadowRadius="0.3"
+		android:textColor="#FFFFFF" android:shadowColor="#09586d"
 		android:layout_gravity="center" android:layout_width="fill_parent"
-		android:textSize="28sp" android:id="@+id/viewCalendar" android:text="calendar"
-		android:layout_marginTop="25dp" android:layout_marginBottom="25dp"
-		android:background="@android:color/transparent"></Button>
-	<Button android:layout_height="wrap_content" android:textColor="#FFFFFF"
+		android:textSize="28sp" android:id="@+id/calendarNavButton"
+		android:text="calendar" android:layout_marginTop="20dp"
+		android:layout_marginBottom="20dp" android:background="@android:color/transparent"></elements.IntentButton>
+	<elements.IntentButton android:layout_height="wrap_content"
+		android:shadowDx="-1.0" android:shadowDy="-1.0" android:shadowRadius="0.3"
+		android:textColor="#FFFFFF" android:shadowColor="#09586d"
 		android:layout_gravity="center" android:layout_width="fill_parent"
-		android:textSize="28sp" android:id="@+id/viewTestAlarm" android:text="test alarm"
+		android:textSize="28sp" android:id="@+id/testNavButton" android:text="test alarm"
 		android:layout_marginBottom="25dp" android:layout_marginTop="25dp"
-		android:background="@android:color/transparent"></Button>
-	<Button android:layout_height="wrap_content" android:textColor="#FFFFFF"
+		android:background="@android:color/transparent"></elements.IntentButton>
+	<elements.IntentButton android:layout_height="wrap_content"
+		android:shadowDx="-1.0" android:shadowDy="-1.0" android:shadowRadius="0.3"
+		android:textColor="#FFFFFF" android:shadowColor="#09586d"
 		android:layout_gravity="center" android:layout_width="fill_parent"
-		android:textSize="28sp" android:id="@+id/viewTipsAndTricks"
-		android:text="tips &amp; tricks" android:layout_marginBottom="25dp"
-		android:layout_marginTop="25dp" android:background="@android:color/transparent"></Button>
-		
-	<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:gravity="fill_horizontal" android:layout_height="40dp" android:background="#33333333">
-		<elements.IntentButton android:text="Settings" android:textColor="#ffffffff" android:layout_weight="1" android:layout_height="fill_parent" android:background="#00ffffff" android:layout_width="0dp" android:id="@+id/settingsNavButton"></elements.IntentButton>
-		<elements.IntentButton android:text="Calendar" android:textColor="#ffffffff" android:layout_weight="1" android:layout_height="fill_parent" android:background="#00ffffff" android:layout_width="0dp" android:id="@+id/calendarNavButton"></elements.IntentButton>
-		<elements.IntentButton android:text="Test" android:textColor="#ffffffff" android:layout_weight="1" android:layout_height="fill_parent" android:background="#00ffffff" android:layout_width="0dp" android:id="@+id/testNavButton"></elements.IntentButton>
-		<elements.IntentButton android:text="Tips" android:textColor="#ffffffff" android:layout_weight="1" android:layout_height="fill_parent" android:background="#00ffffff" android:layout_width="0dp" android:id="@+id/tipsNavButton"></elements.IntentButton>
-	</LinearLayout>
+		android:textSize="28sp" android:id="@+id/tipsNavButton" android:text="tips &amp; tricks"
+		android:layout_marginBottom="25dp" android:layout_marginTop="20dp"
+		android:background="@android:color/transparent"></elements.IntentButton>
 </LinearLayout>
