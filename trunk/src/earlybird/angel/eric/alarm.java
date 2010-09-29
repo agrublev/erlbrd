@@ -1,13 +1,15 @@
 package earlybird.angel.eric;
 
-import java.util.Calendar;
+import java.util.*;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
+import android.content.*;
+import android.content.SharedPreferences.*;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.*;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -25,6 +27,7 @@ public class alarm extends Activity implements OnClickListener {
     private int mMinute;
 	private Button startAlarm;
 	private TextView alarmTitle;
+	private SharedPreferences sharedPrefs;
 
     static final int TIME_DIALOG_ID = 0;
 	/** Called when the activity is first created. */
@@ -33,6 +36,7 @@ public class alarm extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alarm); 
         
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
         // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
         mPickTime = (Button) findViewById(R.id.pickTime);
@@ -78,6 +82,10 @@ public class alarm extends Activity implements OnClickListener {
             new StringBuilder()
                     .append(pad(mHour)).append(":")
                     .append(pad(mMinute)));
+        
+        Editor editor = sharedPrefs.edit();
+        editor.putString("alarm_time", (String) mTimeDisplay.getText());
+        editor.commit();
     }
 
     private static String pad(int c) {
