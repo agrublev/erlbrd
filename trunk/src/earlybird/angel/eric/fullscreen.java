@@ -1,18 +1,25 @@
 package earlybird.angel.eric;
 
 import java.net.URL;
-import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
 
-import android.app.*;
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.*;
-import android.preference.*;
 
 public class fullscreen extends Activity {
 	String weatherServiceUrl = "http://www.google.com/ig/api?weather=";
@@ -33,19 +40,26 @@ public class fullscreen extends Activity {
         
         currentConditionsTextView = (TextView) findViewById(R.id.currentConditionsTextView);
          
-     // get a Calendar object with current time
-        Calendar cal = Calendar.getInstance();
-        // add 5 minutes to the calendar object
-        cal.add(Calendar.SECOND, 10);
+        // get a Calendar object with current time
+        Calendar cal2 = Calendar.getInstance();
+        try {
+			cal2 = dateString2Calendar(timeStamp);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        long diff2 = cal2.getTimeInMillis();
+        
+        
+        //String test = formatter.format(cal.getTime());
         Intent intent = new Intent(this, alarmReceiver.class);
-        intent.putExtra("alarm_message", timeStamp);
+        intent.putExtra("alarm_message", "Alarm Starts");
         // In reality, you would want to have a static variable for the request code instead of 192837
-        PendingIntent sender = PendingIntent.getBroadcast(this, 192837, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent sender = PendingIntent.getBroadcast(this, 646546, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Get the AlarmManager service
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
-        Toast.makeText(this, "alarm set for 10 seconds", Toast.LENGTH_LONG).show();
+        am.set(AlarmManager.RTC_WAKEUP, diff2, sender);
         
         try {
 			updateView();
@@ -53,6 +67,22 @@ public class fullscreen extends Activity {
 			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
 	}
+	
+	public Calendar dateString2Calendar(String s) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-MM-hh:mm");
+		Date date;
+		Calendar calz = Calendar.getInstance();
+        int month = calz.get(Calendar.MONTH) + 1;
+        int year = calz.get(Calendar.YEAR);
+        int dom = calz.get(Calendar.DAY_OF_MONTH);
+
+		String ne = year + "-" + dom + "-" + month + "-" + s;
+		date = sdf.parse(ne);
+		
+		Calendar cali = Calendar.getInstance();
+		cali.setTime(date);
+	    return cali;
+	  }
 	
 	private void updateView() throws Exception {
 		new UpdateViewAsyncTask().execute(this);

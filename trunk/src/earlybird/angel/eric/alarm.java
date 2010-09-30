@@ -7,7 +7,6 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.*;
 import android.content.SharedPreferences.*;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.*;
 import android.view.View;
@@ -71,8 +70,7 @@ public class alarm extends Activity implements OnClickListener {
     		
     		/* The code to display what time they chose */
     		Toast.makeText(this, mTimeDisplay.getText(), Toast.LENGTH_LONG).show();
-    	    MediaPlayer mp = MediaPlayer.create(alarm.this, R.raw.alarm_01);
-    	    mp.start();
+    	    
     	    startActivity(new Intent(this, fullscreen.class));
     	}
     }
