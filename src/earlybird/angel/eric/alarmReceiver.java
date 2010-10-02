@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.widget.Toast;
 
 public class alarmReceiver extends BroadcastReceiver implements SensorListener {
@@ -17,11 +18,15 @@ public class alarmReceiver extends BroadcastReceiver implements SensorListener {
 			min = 0;
 	private static final String TAG = "Sensors";
     private static SensorManager mSensorManager;
-
+    private static Boolean alarmHasGoneOff = false;
+    private Vibrator vibrator;
+    private Context ctx;
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		ctx = context;
 		try {
 			mSoundManager = new soundmanager();
+			vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 			mSoundManager.initSounds(context);
 			mSoundManager.addSound(1, R.raw.alarm_01);
 			mSoundManager.addSound(2, R.raw.move);
@@ -29,27 +34,7 @@ public class alarmReceiver extends BroadcastReceiver implements SensorListener {
 			String message = bundle.getString("alarm_message");
 			Boolean test = true;
 			mSensorManager.registerListener(this, SensorManager.SENSOR_ACCELEROMETER, mSensorManager.SENSOR_DELAY_GAME);
-			/*
-			 * long startTime = System.currentTimeMillis(); long
-			 * maxDurationInMilliseconds = 30 * 60 * 1000;
-			 * 
-			 * while (System.currentTimeMillis() < startTime +
-			 * maxDurationInMilliseconds) { // carry on running - 30 minutes
-			 * hasn't elapsed yet
-			 * 
-			 * if (test == true) {
-			 * 
-			 * } }
-			 */
-			long in30Minutes = 30 * 60 * 1000;
-			Timer timer = new Timer();
-			timer.schedule(new TimerTask() {
-				public void run() {
-					if (true) {
-						System.exit(0);
-					}
-				}
-			}, in30Minutes);
+			alarmWindow(30);
 
 		} catch (Exception e) {
 			Toast
@@ -61,11 +46,34 @@ public class alarmReceiver extends BroadcastReceiver implements SensorListener {
 		}
 
 	}
+	
+	public void alarmWindow(int c) {
+	    // set the timeout    
+	    // this will stop this function in 30 minutes
+	    long in30Minutes = 30 * 60 * 1000;
+	    Timer timer = new Timer();
+	    timer.schedule( new TimerTask(){
+	          public void run() {
+	               //run alarm
+	           }
+	     },  in30Minutes );
+	     if (alarmHasGoneOff == false) {
+	    	 runAlarm();
+	     }
+	     // do the work... 
+	}
+	
+	public void runAlarm() {
+		mSoundManager.playSound(1);
+		vibrator.vibrate(2000);
+		Toast.makeText(ctx, "Alarm has gone off!", Toast.LENGTH_LONG).show();
+		}
+	
 	public void onSensorChanged(int sensor, float[] values) {
 		synchronized (this) {
-			x = Math.abs(values[0]);
-			y = Math.abs(values[1]);
-			z = Math.abs(values[2]);
+			x = values[0];
+			y = values[1];
+			z = values[2];
 			c = (float) (Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));
 			c = (float) Math.sqrt(c);
 			if (s == 0) {
