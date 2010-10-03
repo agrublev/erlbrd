@@ -7,6 +7,12 @@
 		_:dialogTitle="Zip Code"
 		_:key="zip_code"
 		_:dialogMessage="Set  your zip code"></EditTextPreference>
+	<EditTextPreference
+		_:defaultValue="7:00am"
+		_:title="Alarm Time"
+		_:dialogTitle="Alarm Time"
+		_:key="alarm_time"
+		_:dialogMessage="Set  your alarm time"></EditTextPreference>
 	<ListPreference
 		_:title="Alarm Sound"
 		_:summary="Choose an alarm sound"
