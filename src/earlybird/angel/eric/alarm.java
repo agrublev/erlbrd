@@ -11,14 +11,10 @@ import android.os.Bundle;
 import android.preference.*;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
+import android.widget.*;
+import android.widget.AdapterView.*;
 
-public class alarm extends Activity implements OnClickListener {
+public class alarm extends Activity implements OnClickListener, OnItemSelectedListener {
 	private TextView mTimeDisplay;
     private Button mPickTime;
 
@@ -27,6 +23,8 @@ public class alarm extends Activity implements OnClickListener {
 	private Button startAlarm;
 	private TextView alarmTitle;
 	private SharedPreferences sharedPrefs;
+	private Editor editor;
+	private Spinner s;
 
     static final int TIME_DIALOG_ID = 0;
 	/** Called when the activity is first created. */
@@ -36,17 +34,22 @@ public class alarm extends Activity implements OnClickListener {
         setContentView(R.layout.alarm); 
         
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
+        editor = sharedPrefs.edit();
+        
         // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
         mPickTime = (Button) findViewById(R.id.pickTime);
         startAlarm = (Button) findViewById(R.id.startAlarm);
         startAlarm.setOnClickListener(this);
 
-        Spinner s = (Spinner) findViewById(R.id.Spinner01);
+        s = (Spinner) findViewById(R.id.Spinner01);
+        s.setOnItemSelectedListener(new MyOnItemSelectedListener());
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 this, R.array.TimeFrames, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+        String w = sharedPrefs.getString("alarm_window", "0");
+        s.setSelection(Integer.parseInt(w));
         
         
         // add a click listener to the button
@@ -81,7 +84,6 @@ public class alarm extends Activity implements OnClickListener {
                     .append(pad(mHour)).append(":")
                     .append(pad(mMinute)));
         
-        Editor editor = sharedPrefs.edit();
         editor.putString("alarm_time", (String) mTimeDisplay.getText());
         editor.commit();
     }
@@ -111,4 +113,31 @@ public class alarm extends Activity implements OnClickListener {
         }
         return null;
     }
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+		Toast.makeText(this, s.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+		
+	}
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public class MyOnItemSelectedListener implements OnItemSelectedListener {
+
+	    public void onItemSelected(AdapterView<?> parent,
+	        View view, int pos, long id) {
+	      Toast.makeText(parent.getContext(), "The window is " +
+	         pos, Toast.LENGTH_LONG).show();
+	        editor.putString("alarm_window", (String) mTimeDisplay.getText());
+	        editor.commit();
+	    }
+
+	    public void onNothingSelected(AdapterView parent) {
+	      // Do nothing.
+	    }
+	}
+
 }
