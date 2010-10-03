@@ -16,6 +16,9 @@
         <activity android:name=".calendar" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
         <activity android:name=".test" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
         <activity android:name=".alarm" android:label="@string/app_name" screenOrientation="portrait"></activity>
+        <activity android:name=".DataReader" android:label="@string/app_name" screenOrientation="portrait"></activity>
+        <activity android:name=".TestDataReader" android:label="@string/app_name" screenOrientation="portrait"></activity>
+        <activity android:name=".alarm" android:label="@string/app_name" screenOrientation="portrait"></activity>
         <activity android:name=".fullscreen" android:label="@string/app_name" screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
     	<receiver  android:process=":remote" android:name="alarmReceiver"></receiver>
     </application>

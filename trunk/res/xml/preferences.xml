@@ -13,6 +13,18 @@
 		_:dialogTitle="Alarm Time"
 		_:key="alarm_time"
 		_:dialogMessage="Set  your alarm time"></EditTextPreference>
+	<EditTextPreference
+		_:defaultValue="30"
+		_:title="Alarm Time Window"
+		_:dialogTitle="Alarm Time Window"
+		_:key="alarm_window"
+		_:dialogMessage="Set  your alarm time window"></EditTextPreference>
+		<EditTextPreference
+		_:defaultValue="0"
+		_:title="Q Average Max Value"
+		_:dialogTitle="Q Average Max Value"
+		_:key="qave_max"
+		_:dialogMessage="Set  your Q Average Max Value"></EditTextPreference>
 	<ListPreference
 		_:title="Alarm Sound"
 		_:summary="Choose an alarm sound"
