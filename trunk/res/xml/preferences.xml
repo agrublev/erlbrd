@@ -14,7 +14,7 @@
 		_:key="alarm_time"
 		_:dialogMessage="Set  your alarm time"></EditTextPreference>
 	<EditTextPreference
-		_:defaultValue="30"
+		_:defaultValue="0"
 		_:title="Alarm Time Window"
 		_:dialogTitle="Alarm Time Window"
 		_:key="alarm_window"

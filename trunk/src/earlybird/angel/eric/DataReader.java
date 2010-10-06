@@ -7,7 +7,7 @@ import android.hardware.*;
 import android.os.*;
 import android.widget.*;
 
-public class DataReader extends Activity implements SensorListener {
+public class DataReader extends Activity {
 	public String message;
 	protected soundmanager mSoundManager;
 	protected int i = 0;
@@ -17,23 +17,25 @@ public class DataReader extends Activity implements SensorListener {
      * s1-s5 are the values for 5 different readings, d1-d5 are the diviations or deltas, and c is the combined, td is total delta avarage of 5
      * max and min are the highest and lowest deltas observed for calibration purposes
      * */
-	protected float y, z, s1, s2, s3, s4, s5,
+	public float y, z, s1, s2, s3, s4, s5,
 			s, d1, d2, d3, d4, d5, c,
 			td, max, min, mainMax;
-	protected SensorManager mSensorManager;
+	
 	protected Context ctx;
-	protected String mode;
 	
 	public DataReader(Context context) {
 		ctx = context;
+
 	}
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		mSensorManager.registerListener(this, SensorManager.SENSOR_ACCELEROMETER, mSensorManager.SENSOR_DELAY_GAME);
-    }
+        mSoundManager = new soundmanager(); 
+        mSoundManager.initSounds(getBaseContext());
+        mSoundManager.addSound(1, R.raw.alarm_01);
+        mSoundManager.addSound(2, R.raw.move);
+	}
 
 	private void update(int sensor, float[] values) {
 		x = values[0];
@@ -116,19 +118,12 @@ public class DataReader extends Activity implements SensorListener {
 			}
 		}
 	}
-
-	public void setMode(String m){
-		mode = m;
-	}
 	
-	@Override
-	public void onAccuracyChanged(int sensor, int accuracy) {
-		// TODO Auto-generated method stub
-	}
 
-	public void onSensorChanged(int sensor, float[] values) {
-		synchronized (this) {
-					update(sensor, values);
-				}
-	}
+
+
+	/*public void update(int sensor, float[] values) {
+		Toast.makeText(ctx, "test", Toast.LENGTH_LONG).show();
+		
+	}*/
 }

@@ -49,8 +49,11 @@ public class alarm extends Activity implements OnClickListener, OnItemSelectedLi
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
         String w = sharedPrefs.getString("alarm_window", "0");
-        s.setSelection(Integer.parseInt(w));
-        
+        try{
+        	s.setSelection(Integer.parseInt(w));
+        }catch (Exception e){
+        	s.setSelection(0);
+        }
         
         // add a click listener to the button
         mPickTime.setOnClickListener(new View.OnClickListener() {
