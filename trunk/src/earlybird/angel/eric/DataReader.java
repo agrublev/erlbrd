@@ -9,7 +9,6 @@ import android.widget.*;
 
 public class DataReader extends Activity {
 	public String message;
-	protected soundmanager mSoundManager;
 	protected int i = 0;
 	protected float maxes[] = new float[500];
 	protected float x;
@@ -31,10 +30,6 @@ public class DataReader extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSoundManager = new soundmanager(); 
-        mSoundManager.initSounds(getBaseContext());
-        mSoundManager.addSound(1, R.raw.alarm_01);
-        mSoundManager.addSound(2, R.raw.move);
 	}
 
 	private void update(int sensor, float[] values) {
@@ -54,7 +49,7 @@ public class DataReader extends Activity {
 				if (d1 > max) {
 					maxes[i] = d1;
 					i ++;
-					mSoundManager.playSound(2);
+					//mSoundManager.playSound(2);
 				}
 			} else if (s2 == 0) {
 				s2 = c;
@@ -62,7 +57,7 @@ public class DataReader extends Activity {
 				if (d2 > max) {
 					maxes[i] = d2;
 					i++;
-					mSoundManager.playSound(2);
+					//mSoundManager.playSound(2);
 				}
 			} else if (s3 == 0) {
 				s3 = c;
@@ -70,7 +65,7 @@ public class DataReader extends Activity {
 				if (d3 > max) {
 					maxes[i] = d3;
 					i++;
-					mSoundManager.playSound(2);
+					//mSoundManager.playSound(2);
 				}
 			} else if (s4 == 0) {
 				s4 = c;
@@ -78,7 +73,7 @@ public class DataReader extends Activity {
 				if (d4 > max) {
 					maxes[i] = d4;
 					i++;
-					mSoundManager.playSound(2);
+					//mSoundManager.playSound(2);
 				}
 			} else if (s5 == 0) {
 				s5 = c;
@@ -86,7 +81,7 @@ public class DataReader extends Activity {
 				if (d5 > max) {
 					maxes[i] = d5;
 					i++;
-					mSoundManager.playSound(2);
+					//mSoundManager.playSound(2);
 				}
 			} else {
 				td = (d1 + d2 + d3 + d4 + d5) / 5;
@@ -109,7 +104,7 @@ public class DataReader extends Activity {
 				}
 				if (min == 0) {
 					min = td;
-					mSoundManager.playSound(2);
+					//mSoundManager.playSound(2);
 				} else if (min > td) {
 					min = td;
 				}
