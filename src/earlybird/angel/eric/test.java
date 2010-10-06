@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import elements.IntentButton;
 
-public class test extends Activity implements OnClickListener, SensorListener {
+public class test extends Activity implements OnClickListener, SensorListener, MaxIncreaseListener {
 	/** Called when the activity is first created. */
 	private static final String TAG = "Sensors";
 
@@ -20,11 +20,18 @@ public class test extends Activity implements OnClickListener, SensorListener {
 
 	private TestDataReader dataReader;
 	protected SensorManager mSensorManager;
+
+	private soundmanager mSoundManager;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        
+        mSoundManager = new soundmanager(); 
+        mSoundManager.initSounds(getBaseContext());
+        mSoundManager.addSound(1, R.raw.alarm_01);
+        mSoundManager.addSound(2, R.raw.move);
         
         setContentView(R.layout.calibration); 
         
@@ -38,6 +45,7 @@ public class test extends Activity implements OnClickListener, SensorListener {
         backButton.setOnClickListener(this);
         
         dataReader = new TestDataReader(this);
+        dataReader.addMaxIncreaseListener(this);
     }
     
     public void onClick(View v) {
@@ -68,17 +76,12 @@ public class test extends Activity implements OnClickListener, SensorListener {
 	@Override
 	public void onSensorChanged(int sensor, float[] values) {
 		dataReader.update(sensor, values);
-		((TextView) findViewById(R.id.max_label)).setText(Float.toString(dataReader.max));
-		((TextView) findViewById(R.id.min_label)).setText(Float.toString(dataReader.min));
 		((TextView) findViewById(R.id.d_label)).setText(Float.toString(dataReader.td));
 	    ((TextView) findViewById(R.id.x_label)).setText(Float.toString(values[0]));
 	    ((TextView) findViewById(R.id.y_label)).setText(Float.toString(values[1]));
 	    ((TextView) findViewById(R.id.z_label)).setText(Float.toString(values[2]));
-	    beep();
 	}
 	
-	public void beep(){
-	}
 	 /* @Override
 	    protected void onResume() {
 	    super.onResume();
@@ -86,5 +89,12 @@ public class test extends Activity implements OnClickListener, SensorListener {
 	    
 	    
 	  }*/
+
+	@Override
+	public void maxIncrease(TestDataReader sender) {
+		((TextView) findViewById(R.id.max_label)).setText(Float.toString(dataReader.max));
+		((TextView) findViewById(R.id.min_label)).setText(Float.toString(dataReader.min));
+		mSoundManager.playSound(1);
+	}
 
 }
