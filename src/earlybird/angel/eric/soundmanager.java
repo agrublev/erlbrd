@@ -23,7 +23,7 @@ public class soundmanager {
 		
 	public void initSounds(Context theContext) { 
 		 mContext = theContext;
-	     mSoundPool = new SoundPool(4, AudioManager.STREAM_NOTIFICATION, 0); 
+	     mSoundPool = new SoundPool(4, AudioManager.STREAM_ALARM, 0); 
 	     mSoundPoolMap = new HashMap<Integer, Integer>(); 
 	     mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE); 	     
 	} 
@@ -35,13 +35,13 @@ public class soundmanager {
 	
 	public void playSound(int index) { 
 		
-	     int streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION); 
+	     int streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM); 
 	     mSoundPool.play(mSoundPoolMap.get(index), streamVolume, streamVolume, 1, 0, 1f); 
 	}
 	
 	public void playLoopedSound(int index) { 
 		
-	     int streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION); 
+	     int streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM); 
 	     mSoundPool.play(mSoundPoolMap.get(index), streamVolume, streamVolume, 1, -1, 1f); 
 	}
 	
