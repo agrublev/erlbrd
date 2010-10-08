@@ -3,6 +3,7 @@ package earlybird.angel.eric;
 import elements.*;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +40,12 @@ public class main extends Activity implements OnClickListener {
         
     }
     
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+      super.onConfigurationChanged(newConfig);
+      //setContentView(R.layout.myLayout);
+    }
+
     public void onClick(View v) {
     	IntentButton b = (IntentButton) v;
     	startActivity(b.intent);

@@ -116,13 +116,13 @@ public class alarm extends Activity implements OnClickListener, OnItemSelectedLi
         }
         return null;
     }
-	@Override
+
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
 		Toast.makeText(this, s.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
 		
 	}
-	@Override
+
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		

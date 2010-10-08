@@ -59,7 +59,6 @@ public class test extends Activity implements OnClickListener, SensorListener, M
     	}
     }
 
-	@Override
 	public void onAccuracyChanged(int sensor, int accuracy) {
 		// TODO Auto-generated method stub
 		
@@ -73,7 +72,6 @@ public class test extends Activity implements OnClickListener, SensorListener, M
 	     mSensorManager.unregisterListener(this, SensorManager.SENSOR_ACCELEROMETER);
 	 }
 	
-	@Override
 	public void onSensorChanged(int sensor, float[] values) {
 		dataReader.update(sensor, values);
 		((TextView) findViewById(R.id.d_label)).setText(Float.toString(dataReader.td));
@@ -90,7 +88,6 @@ public class test extends Activity implements OnClickListener, SensorListener, M
 	    
 	  }*/
 
-	@Override
 	public void maxIncrease(TestDataReader sender) {
 		((TextView) findViewById(R.id.max_label)).setText(Float.toString(dataReader.max));
 		((TextView) findViewById(R.id.min_label)).setText(Float.toString(dataReader.min));
