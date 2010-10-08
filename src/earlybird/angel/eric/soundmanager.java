@@ -28,9 +28,9 @@ public class soundmanager {
 	     mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE); 	     
 	} 
 	
-	public void addSound(int Index,int SoundID)
+	public void addSound(int index,int SoundID)
 	{
-		mSoundPoolMap.put(1, mSoundPool.load(mContext, SoundID, 1));
+		mSoundPoolMap.put(index, mSoundPool.load(mContext, SoundID, 1));
 	}
 	
 	public void playSound(int index) { 

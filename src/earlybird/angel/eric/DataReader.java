@@ -6,30 +6,32 @@ import android.content.*;
 import android.hardware.*;
 import android.os.*;
 import android.widget.*;
+import java.util.ArrayList;
 
 public class DataReader extends Activity {
 	public String message;
 	protected int i = 0;
 	protected float maxes[] = new float[500];
 	protected float x;
-    /*	
-     * s1-s5 are the values for 5 different readings, d1-d5 are the diviations or deltas, and c is the combined, td is total delta avarage of 5
-     * max and min are the highest and lowest deltas observed for calibration purposes
-     * */
-	public float y, z, s1, s2, s3, s4, s5,
-			s, d1, d2, d3, d4, d5, c,
-			td, max, min, mainMax;
-	
+	/*
+	 * s1-s5 are the values for 5 different readings, d1-d5 are the diviations
+	 * or deltas, and c is the combined, td is total delta avarage of 5 max and
+	 * min are the highest and lowest deltas observed for calibration purposes
+	 */
+	public float y, z, s1, s2, s3, s4, s5, s, d1, d2, d3, d4, d5, c, td, max,
+			min, mainMax;
+
 	protected Context ctx;
-	
+	private ArrayList onSleepStateChangeListeners = new ArrayList();
+
 	public DataReader(Context context) {
 		ctx = context;
 
 	}
-	
+
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 	}
 
 	private void update(int sensor, float[] values) {
@@ -48,8 +50,8 @@ public class DataReader extends Activity {
 				d1 = Math.abs(s - s1);
 				if (d1 > max) {
 					maxes[i] = d1;
-					i ++;
-					//mSoundManager.playSound(2);
+					i++;
+					// mSoundManager.playSound(2);
 				}
 			} else if (s2 == 0) {
 				s2 = c;
@@ -57,7 +59,7 @@ public class DataReader extends Activity {
 				if (d2 > max) {
 					maxes[i] = d2;
 					i++;
-					//mSoundManager.playSound(2);
+					// mSoundManager.playSound(2);
 				}
 			} else if (s3 == 0) {
 				s3 = c;
@@ -65,7 +67,7 @@ public class DataReader extends Activity {
 				if (d3 > max) {
 					maxes[i] = d3;
 					i++;
-					//mSoundManager.playSound(2);
+					// mSoundManager.playSound(2);
 				}
 			} else if (s4 == 0) {
 				s4 = c;
@@ -73,7 +75,7 @@ public class DataReader extends Activity {
 				if (d4 > max) {
 					maxes[i] = d4;
 					i++;
-					//mSoundManager.playSound(2);
+					// mSoundManager.playSound(2);
 				}
 			} else if (s5 == 0) {
 				s5 = c;
@@ -81,7 +83,7 @@ public class DataReader extends Activity {
 				if (d5 > max) {
 					maxes[i] = d5;
 					i++;
-					//mSoundManager.playSound(2);
+					// mSoundManager.playSound(2);
 				}
 			} else {
 				td = (d1 + d2 + d3 + d4 + d5) / 5;
@@ -96,15 +98,14 @@ public class DataReader extends Activity {
 								mainMax = maxes[a];
 							}
 						}
-						message = "The biggest change was" + Float.toString(mainMax);
-						Toast.makeText(
-								ctx, message,
-								Toast.LENGTH_LONG).show();
+						message = "The biggest change was"
+								+ Float.toString(mainMax);
+						Toast.makeText(ctx, message, Toast.LENGTH_LONG).show();
 					}
 				}
 				if (min == 0) {
 					min = td;
-					//mSoundManager.playSound(2);
+					// mSoundManager.playSound(2);
 				} else if (min > td) {
 					min = td;
 				}
@@ -113,12 +114,29 @@ public class DataReader extends Activity {
 			}
 		}
 	}
-	
 
+	public void addOnSleepStateChangeListener(
+			OnSleepStateChangeListener listener) {
+		onSleepStateChangeListeners.add(listener);
+	}
 
+	public void removeOnSleepStateChangeListener(
+			OnSleepStateChangeListener listener) {
+		onSleepStateChangeListeners.remove(listener);
+	}
 
-	/*public void update(int sensor, float[] values) {
-		Toast.makeText(ctx, "test", Toast.LENGTH_LONG).show();
-		
-	}*/
+	private void fireOnSleepStateChange() {
+		for (int i = 0; i < onSleepStateChangeListeners.size(); i++) {
+			OnSleepStateChangeListener listener = (OnSleepStateChangeListener) onSleepStateChangeListeners
+					.get(i);
+			listener.onSleepStateChange(this);
+		}
+	}
+
+	/*
+	 * public void update(int sensor, float[] values) { Toast.makeText(ctx,
+	 * "test", Toast.LENGTH_LONG).show();
+	 * 
+	 * }
+	 */
 }

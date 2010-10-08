@@ -19,7 +19,7 @@
 		_:dialogTitle="Alarm Time Window"
 		_:key="alarm_window"
 		_:dialogMessage="Set  your alarm time window"></EditTextPreference>
-		<EditTextPreference
+	<EditTextPreference
 		_:defaultValue="0"
 		_:title="Q Average Max Value"
 		_:dialogTitle="Q Average Max Value"
@@ -29,7 +29,7 @@
 		_:title="Alarm Sound"
 		_:summary="Choose an alarm sound"
 		_:key="alarm_sound"
-		_:defaultValue="1"
+		_:defaultValue="0"
 		_:entries="@array/alarm_sounds"
 		_:entryValues="@array/alarm_sound_values" />
 <RingtonePreference
