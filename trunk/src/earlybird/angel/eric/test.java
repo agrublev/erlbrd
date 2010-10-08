@@ -30,8 +30,8 @@ public class test extends Activity implements OnClickListener, SensorListener, M
         
         mSoundManager = new soundmanager(); 
         mSoundManager.initSounds(getBaseContext());
-        mSoundManager.addSound(1, R.raw.alarm_01);
-        mSoundManager.addSound(2, R.raw.move);
+        mSoundManager.addSound(0, R.raw.alarm_01);
+        mSoundManager.addSound(1, R.raw.move);
         
         setContentView(R.layout.calibration); 
         

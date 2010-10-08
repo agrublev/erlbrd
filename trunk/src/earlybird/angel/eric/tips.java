@@ -15,7 +15,7 @@ public class tips extends Activity implements OnClickListener {
         setContentView(R.layout.tips); 
         
         IntentButton backButton = (IntentButton) findViewById(R.id.backButton);
-        backButton.intent = new Intent(this, settings.class);
+        backButton.intent = new Intent(this, main.class);
         backButton.setOnClickListener(this);
     }
     

@@ -1,82 +1,102 @@
 package earlybird.angel.eric;
  
  
+import java.util.*;
+
 import elements.*;
 import android.app.Activity;
 import android.content.*;
+import android.content.SharedPreferences.*;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.*;
+import android.text.*;
 import android.view.*;
 import android.view.View.*;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
  
-public class settings extends Activity implements OnClickListener {
+public class settings extends Activity implements OnClickListener, TextWatcher, OnItemSelectedListener {
  
     private Spinner z;
+	private SharedPreferences sharedPrefs;
+	private Editor editor;
+	private EditText zipCodeInput;
+	private int sound;
+	private boolean spinnerInitialized = false;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-         
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-         
+        
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
+        editor = sharedPrefs.edit();
+        
+        
         z = (Spinner) findViewById(R.id.pickAlarm);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.alarms, android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.alarm_sounds, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         z.setAdapter(adapter);
-        z.setOnItemSelectedListener(new MyOnItemSelectedListener());
-         
-        //IntentButton backButton = (IntentButton) findViewById(R.id.backButton);
-        //backButton.intent = new Intent(this, settings.class);
-        //backButton.setOnClickListener(this);
+        z.setSelection(sharedPrefs.getInt("alarm_sound", 0));
+        z.setOnItemSelectedListener(this);
+        
+        zipCodeInput = (EditText) findViewById(R.id.zipcodeInput);
+        String zipCode = sharedPrefs.getString("zip_code", "");
+        zipCodeInput.setText(zipCode);
+        zipCodeInput.addTextChangedListener(this);
+        
+        IntentButton backButton = (IntentButton) findViewById(R.id.backButton);
+        backButton.intent = new Intent(this, main.class);
+        backButton.setOnClickListener(this);
     }
      
     public void onClick(View v) {
         IntentButton b = (IntentButton) v;
         startActivity(b.intent);
     }
- 
-    public class MyOnItemSelectedListener implements OnItemSelectedListener {
- 
-        public void onItemSelected(AdapterView<?> parent,
-            View view, int pos, long id) {
-            parent.getContext();
-          Toast.makeText(parent.getContext(), "The planet is " +
-              parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
-          if (parent.getItemAtPosition(pos).toString() == "Alarm 1") {
-              MediaPlayer mp = MediaPlayer.create(settings.this, R.raw.alarm_01);
-               mp.start();
-          }
-        }
- 
-        public void onNothingSelected(AdapterView parent) {
-          // Do nothing.
-        }
-    }
-     
-    /**
-     * Build the options menu.
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        boolean b = false;
-        try {
-            new MenuInflater(this).inflate(R.menu.optionsmenu, menu);
-            b = super.onCreateOptionsMenu(menu);
-        } catch (Throwable t) {
-            Toast.makeText(this, t.toString(), 2000).show();
-        }
-        return b;
-    }
-    /**
-     * Start the edit preferences activity.
-     */
+
+    // Zip Code Listener
+	@Override
+	public void afterTextChanged(Editable arg0) {
+		Editable zip = zipCodeInput.getText();
+        editor.putString("zip_code", zip.toString());
+        editor.commit();
+	}
+
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count, int after) {	
+	}
+
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+	}	
+	
+	// Alarm Listener
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
+            if(spinnerInitialized){  // Prevent sound from playing onCreate
+	            String[] soundFile = getResources().getStringArray(R.array.alarm_sound_values);
+	            sound = getResources().getIdentifier(soundFile[pos], "raw","earlybird.angel.eric");
+	          
+	            MediaPlayer mp = MediaPlayer.create(settings.this, sound);
+	            mp.start();
+	            
+	            editor.putInt("alarm_sound", pos);
+	            editor.commit();
+            }else{
+            	spinnerInitialized = true;
+            }
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+    /* To call this activity from the Menu butotn
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean b = false;
@@ -91,5 +111,5 @@ public class settings extends Activity implements OnClickListener {
             Toast.makeText(this, t.toString(), 10000).show();
         }
         return b;
-    }
+    }*/
 }

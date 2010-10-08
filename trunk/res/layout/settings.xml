@@ -7,22 +7,21 @@
 	<LinearLayout android:id="@+id/LinearLayout02"
 		android:orientation="vertical" android:layout_width="fill_parent"
 		android:layout_gravity="fill_vertical" android:layout_weight="1"
-		android:layout_height="0dp">
+		android:layout_height="0dp" android:paddingLeft="10dp">
 		<TextView android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal" android:paddingTop="5dp"
 			android:paddingBottom="10dp" android:cursorVisible="true"
 			android:layout_width="fill_parent" android:id="@+id/settingsTitle"
-			android:text="Settings" android:paddingLeft="15dp" android:shadowDx="-1.0"
+			android:text="Settings" android:shadowDx="-1.0"
 			android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
 			android:shadowColor="#09586d" android:textSize="42sp"></TextView>
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Pick an alarm song:"
-			android:id="@+id/alarmText" android:textColor="#FFFFFF"
-			android:layout_marginLeft="10dp"></TextView>
-		<Spinner android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:layout_marginLeft="10dp"
-			android:id="@+id/pickAlarm" android:prompt="@string/pickalarm"></Spinner>
-	</LinearLayout>
+		
+		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Choose an Alarm Sound" android:textColor="#ffffffff"></TextView><Spinner android:layout_height="wrap_content" android:id="@+id/pickAlarm" android:prompt="@string/pickalarm" android:duplicateParentState="false" android:layout_width="200dp"></Spinner>
+	<TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:textColor="#ffffffff" android:text="Change your location"></TextView><EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="zipcode" android:id="@+id/zipcodeInput" android:width="200dp"></EditText>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/resetButton" android:text="Reset Calibration" android:width="200dp" android:layout_marginTop="30dp"></Button>
+
+
+</LinearLayout>
 
 
 	<LinearLayout android:id="@+id/LinearLayout01"

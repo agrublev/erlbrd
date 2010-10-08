@@ -9,6 +9,7 @@ import android.content.*;
 import android.content.SharedPreferences.*;
 import android.os.Bundle;
 import android.preference.*;
+import android.text.*;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -25,6 +26,7 @@ public class alarm extends Activity implements OnClickListener, OnItemSelectedLi
 	private SharedPreferences sharedPrefs;
 	private Editor editor;
 	private Spinner s;
+	private String alarmSoundName;
 
     static final int TIME_DIALOG_ID = 0;
 	/** Called when the activity is first created. */
@@ -35,6 +37,11 @@ public class alarm extends Activity implements OnClickListener, OnItemSelectedLi
         
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
         editor = sharedPrefs.edit();
+        
+        String[] alarmNames = getResources().getStringArray(R.array.alarm_sounds);
+        alarmSoundName = alarmNames[sharedPrefs.getInt("alarm_sound", 0)];
+        TextView currentSong = (TextView) findViewById(R.id.currentSong);
+        currentSong.setText(alarmSoundName);
         
         // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
