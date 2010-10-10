@@ -126,24 +126,31 @@
 	</string-array>
 
 	<string-array name="alarm_sounds">
-		<item>Warm Breeze</item>
-		<item>Forest Glade</item>
-		<item>Morning Mist</item>
-		<item>Sunrise</item>
-		<item>Distant Memories</item>
-		<item>Nightingale</item>
-		<item>Urban Call</item>
-	</string-array>
+		<item>Morning Balad</item>
+		<item>Evening Crickets</item>
+		<item>Early Bird Forest</item>
+		<item>Good Job Wake Up</item>
+		<item>Heavy Rain</item>
+		<item>Newborn</item>
+		<item>Ocean Surf</item>
+	<item>Light Rain</item>
+<item>Rooster</item>
+<item>Under Water</item>
+
+</string-array>
 
 	<string-array name="alarm_sound_values">
-		<item>alarm_01</item>
-		<item>move</item>
-		<item>move</item>
-		<item>move</item>
-		<item>move</item>
-		<item>move</item>
-		<item>move</item>
-		<item>move</item>
-	</string-array>
+		<item>alarm_balad</item>
+		<item>alarm_crickets</item>
+		<item>alarm_forest</item>
+		<item>alarm_goodjob</item>
+		<item>alarm_heavyrain</item>
+		<item>alarm_newborn</item>
+		<item>alarm_ocean</item>
+		<item>alarm_rain</item>
+	<item>alarm_rooster</item>
+<item>alarm_underwater</item>
+</string-array>
+
 
 </resources>
