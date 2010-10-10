@@ -19,7 +19,7 @@ public class main extends Activity implements OnClickListener {
         setContentView(R.layout.main); 
         
         IntentButton alarmNavButton = (IntentButton) findViewById(R.id.alarmNavButton);
-        alarmNavButton.intent = new Intent(this, alarm.class);
+        alarmNavButton.intent = new Intent(this, AlarmSettings.class);
         alarmNavButton.setOnClickListener(this);
         
         IntentButton settingsNavButton = (IntentButton) findViewById(R.id.settingsNavButton);

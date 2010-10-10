@@ -26,8 +26,8 @@
 
 	<LinearLayout android:id="@+id/LinearLayout01"
 		android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal|center" android:layout_marginBottom="5dp">
-		<elements.IntentButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="center" android:gravity="center_horizontal|center"></elements.IntentButton>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="center" android:gravity="center_horizontal|center"></Button>
 	</LinearLayout>
 
 </LinearLayout>

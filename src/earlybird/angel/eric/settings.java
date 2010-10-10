@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.*;
 import android.content.SharedPreferences.*;
 import android.media.MediaPlayer;
+import android.net.*;
 import android.os.Bundle;
 import android.preference.*;
 import android.text.*;
@@ -24,6 +25,8 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
 	private EditText zipCodeInput;
 	private int sound;
 	private boolean spinnerInitialized = false;
+	private MediaPlayer mp;
+	private String[] soundFile;
 	
     /** Called when the activity is first created. */
     @Override
@@ -33,7 +36,6 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
         
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
         editor = sharedPrefs.edit();
-        
         
         z = (Spinner) findViewById(R.id.pickAlarm);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.alarm_sounds, android.R.layout.simple_spinner_item);
@@ -46,15 +48,38 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
         String zipCode = sharedPrefs.getString("zip_code", "");
         zipCodeInput.setText(zipCode);
         zipCodeInput.addTextChangedListener(this);
+   
         
-        IntentButton backButton = (IntentButton) findViewById(R.id.backButton);
-        backButton.intent = new Intent(this, main.class);
-        backButton.setOnClickListener(this);
+        soundFile = getResources().getStringArray(R.array.alarm_sound_values);
+        sound = getResources().getIdentifier(soundFile[sharedPrefs.getInt("alarm_sound", 0)], "raw","earlybird.angel.eric");
+        mp = MediaPlayer.create(settings.this, sound);
+        
+        Button backButton = (Button) findViewById(R.id.backButton);
+        ButtonClicked backButtonListener = new ButtonClicked();
+        backButtonListener.setToBackButton();
+        backButton.setOnClickListener(backButtonListener);
     }
      
     public void onClick(View v) {
         IntentButton b = (IntentButton) v;
         startActivity(b.intent);
+    }
+    
+    public class ButtonClicked implements OnClickListener{
+    	private Boolean isBackButton = false;
+    	
+		@Override
+		public void onClick(View context) {
+			if(isBackButton){
+				onBackPressed();
+			}
+			
+		}
+		
+		public void setToBackButton(){
+			isBackButton = true;
+		}
+    	
     }
 
     // Zip Code Listener
@@ -76,11 +101,12 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
 	// Alarm Listener
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
-            if(spinnerInitialized){  // Prevent sound from playing onCreate
+		if(spinnerInitialized){  // Prevent sound from playing onCreate
 	            String[] soundFile = getResources().getStringArray(R.array.alarm_sound_values);
 	            sound = getResources().getIdentifier(soundFile[pos], "raw","earlybird.angel.eric");
-	          
-	            MediaPlayer mp = MediaPlayer.create(settings.this, sound);
+	            
+	            mp.reset();
+	            mp = MediaPlayer.create(settings.this, sound);
 	            mp.start();
 	            
 	            editor.putInt("alarm_sound", pos);
@@ -94,6 +120,13 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void onBackPressed(){
+		if(mp.isPlaying())
+			mp.release();
+		this.finish();
 	}
 	
     /* To call this activity from the Menu butotn
