@@ -21,41 +21,45 @@ import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class fullscreen extends Activity {
-	String weatherServiceUrl = "http://www.google.com/ig/api?weather=";
+public class AlarmClock extends Activity {
+	
+	private String weatherServiceUrl = "http://www.google.com/ig/api?weather=";
 	private TextView currentConditionsTextView;
 	private String zipCode;
-    /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    String s = prefs.getString("zip_code", "");*/
+	private Alarm alarm;
+
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fullscreen); 
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         
+        //PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
         String timeStamp = sharedPrefs.getString("alarm_time", "");
         zipCode = sharedPrefs.getString("zip_code", "");
         
         currentConditionsTextView = (TextView) findViewById(R.id.currentConditionsTextView);
          
+       // alarm = new Alarm(); 
+ 
+        
         // get a Calendar object with current time
         Calendar cal2 = Calendar.getInstance();
         try {
 			cal2 = dateString2Calendar(timeStamp);
+			Toast.makeText(AlarmClock.this, "test: " + cal2.HOUR + ":" + cal2.MINUTE, Toast.LENGTH_LONG).show();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         long diff2 = cal2.getTimeInMillis();
         
-        
         //String test = formatter.format(cal.getTime());
         Intent intent = new Intent(this, alarmReceiver.class);
         intent.putExtra("alarm_message", "Alarm Starts");
         // In reality, you would want to have a static variable for the request code instead of 192837
-        PendingIntent sender = PendingIntent.getBroadcast(this, 646546, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Get the AlarmManager service
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -87,6 +91,13 @@ public class fullscreen extends Activity {
 	private void updateView() throws Exception {
 		new UpdateViewAsyncTask().execute(this);
 	}
+	
+	//@Override
+	//public void onBackPressed(){
+	//	if(mp.isPlaying())
+	//		mp.release();
+	//	this.finish();
+	//}
 	
 	private class UpdateViewAsyncTask extends AsyncTask<Object, Integer, Exception> {
 
@@ -130,7 +141,7 @@ public class fullscreen extends Activity {
 			if (result == null) {
 				currentConditionsTextView.setText(condition);
 			} else
-				Toast.makeText(fullscreen.this, result.getMessage(), Toast.LENGTH_LONG).show();
+				Toast.makeText(AlarmClock.this, result.getMessage(), Toast.LENGTH_LONG).show();
 		}
 
 	}
