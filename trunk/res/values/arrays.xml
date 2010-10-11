@@ -153,4 +153,18 @@
 </string-array>
 
 
+<string-array name="time_windows"><item>30 Minutes</item>
+<item>40 Minutes</item>
+<item>50 Minutes</item>
+<item>60 Minutes</item>
+<item>1.5 Hours</item>
+<item>None</item>
+</string-array>
+<string-array name="time_windows_values"><item>30</item>
+<item>40</item>
+<item>50</item>
+<item>60</item>
+<item>90</item>
+<item>0</item>
+</string-array>
 </resources>
