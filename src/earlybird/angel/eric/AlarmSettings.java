@@ -27,6 +27,7 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
 	private Editor editor;
 	private Spinner s;
 	private String alarmSoundName;
+	private Spinner mWindowDisplay;
 
     static final int TIME_DIALOG_ID = 0;
 	/** Called when the activity is first created. */
@@ -45,6 +46,7 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
         
         // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
+        mWindowDisplay = (Spinner)findViewById(R.id.Spinner01);
         mPickTime = (Button) findViewById(R.id.pickTime);
         startAlarm = (Button) findViewById(R.id.startAlarm);
         startAlarm.setOnClickListener(this);
@@ -52,12 +54,13 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
         s = (Spinner) findViewById(R.id.Spinner01);
         s.setOnItemSelectedListener(new MyOnItemSelectedListener());
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
-                this, R.array.TimeFrames, android.R.layout.simple_spinner_item);
+                this, R.array.time_windows, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-        String w = sharedPrefs.getString("alarm_window", "0");
+        
+        int  w = sharedPrefs.getInt("alarm_window", 0);
         try{
-        	s.setSelection(Integer.parseInt(w));
+        	s.setSelection(w);
         }catch (Exception e){
         	s.setSelection(0);
         }
@@ -82,7 +85,7 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
     	if (v == startAlarm) {
     		
     		/* The code to display what time they chose */
-    		Toast.makeText(this, mTimeDisplay.getText(), Toast.LENGTH_LONG).show();
+    		//Toast.makeText(this, mTimeDisplay.getText(), Toast.LENGTH_LONG).show();
     	    
     	    startActivity(new Intent(this, AlarmClock.class));
     	}
@@ -126,7 +129,7 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
 
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
-		Toast.makeText(this, s.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+		//Toast.makeText(this, s.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
 		
 	}
 
@@ -139,9 +142,9 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
 
 	    public void onItemSelected(AdapterView<?> parent,
 	        View view, int pos, long id) {
-	      Toast.makeText(parent.getContext(), "The window is " +
-	         pos, Toast.LENGTH_LONG).show();
-	        editor.putString("alarm_window", (String) mTimeDisplay.getText());
+	      /*Toast.makeText(parent.getContext(), "The window is " +
+	         pos, Toast.LENGTH_LONG).show();*/
+	        editor.putInt("alarm_window", pos);
 	        editor.commit();
 	    }
 
