@@ -2,13 +2,20 @@ package earlybird.angel.eric;
 
 import java.util.*;
 
-
-import android.app.*;
-import android.content.*;
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.*;
 import android.media.*;
-import android.os.*;
-import android.preference.*;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class WakeUp extends Activity implements SensorEventListener{
 	
@@ -18,11 +25,14 @@ public class WakeUp extends Activity implements SensorEventListener{
 	private SensorManager sensorManager;
 	private List<Sensor> sensors;
 	private Sensor sensor;
+	private TextView xView;
+	private TextView yView;
+	private TextView zView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 	       super.onCreate(savedInstanceState);
-	       setContentView(R.layout.wakeUp);
+	       setContentView(R.layout.wakeup);
 	       
 	        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
 	       	soundFile = getResources().getStringArray(
