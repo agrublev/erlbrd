@@ -24,13 +24,22 @@ public class WakeUp extends Activity implements SensorEventListener{
 	private SensorManager sensorManager;
 	private List<Sensor> sensors;
 	private Sensor sensor;
-	private TextView xView;
-	private TextView yView;
-	private TextView zView;
+	private long now;
 	
-	private float[] aMins = {Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE};
-	private float[] aMaxs = {Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE};
-
+	private Calendar cal;
+	
+	private ArrayList<float[]> tempVals;
+	private ArrayList<Second> seconds;
+	
+	// Collect Average Value of Seconds for Alarm
+	//private long[] aveVals = new long[90];
+	private float aveCount = 0;
+	private float aveVal = 0;
+	private TextView curValView;
+	private TextView timeValView;
+	private TextView aveValView;
+	private TextView countView;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 	       super.onCreate(savedInstanceState);
@@ -43,13 +52,19 @@ public class WakeUp extends Activity implements SensorEventListener{
 	       					soundFile[sharedPrefs.getInt("alarm_sound", 0)], "raw",
 	       					"earlybird.angel.eric");
 	       			mp = MediaPlayer.create(this, sound);
-	       			mp.start();
+	       			//mp.start();
 	       	
-	       		
+	       		cal = Calendar.getInstance();
+	       		long now = ((cal.getTimeInMillis() / 1000));
 
-	       		xView = (TextView) findViewById(R.id.xView);
-	       		yView = (TextView) findViewById(R.id.yView);
-	       		zView = (TextView) findViewById(R.id.zView);
+	    
+	       		curValView = (TextView) findViewById(R.id.rView);
+	       		timeValView = (TextView) findViewById(R.id.tView);
+	       		aveValView = (TextView) findViewById(R.id.fView);
+	       		countView = (TextView) findViewById(R.id.cView);
+	       		
+	       		tempVals = new ArrayList<float[]>();
+	       		seconds = new ArrayList<Second>();
 	}
 	@Override
 	protected void onPause() {
@@ -68,7 +83,7 @@ public class WakeUp extends Activity implements SensorEventListener{
 			sensor = sensors.get(0);
 		}
 		if (sensor != null) {
-			sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI);
+			sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
 		}
 
 		super.onResume();
@@ -87,26 +102,34 @@ public class WakeUp extends Activity implements SensorEventListener{
 		if ((event.sensor.getType() != Sensor.TYPE_ACCELEROMETER) || (event.values.length < 3))
 			return;
 
-		float ax = event.values[SensorManager.DATA_X];
-		if (ax < aMins[SensorManager.DATA_X])
-			aMins[SensorManager.DATA_X] = ax;
-		if (ax > aMaxs[SensorManager.DATA_X])
-			aMaxs[SensorManager.DATA_X] = ax;
+		Calendar timeCal = Calendar.getInstance();
+		long time = ((timeCal.getTimeInMillis() / 1000));
 		
-		float ay = event.values[SensorManager.DATA_Y];
-		if (ay < aMins[SensorManager.DATA_Y])
-			aMins[SensorManager.DATA_Y] = ay;
-		if (ay > aMaxs[SensorManager.DATA_Y])
-			aMaxs[SensorManager.DATA_Y] = ay;
-
-		float az = event.values[SensorManager.DATA_Z];
-		if (az < aMins[SensorManager.DATA_Z])
-			aMins[SensorManager.DATA_Z] = az;
-		if (az > aMaxs[SensorManager.DATA_Z])
-			aMaxs[SensorManager.DATA_Z] = az;
-
-		xView.setText("Ax = " + String.format("%.2f", ax) + "     Range = " +  String.format("%.2f", aMins[SensorManager.DATA_X]) + " to " +  String.format("%.2f", aMaxs[SensorManager.DATA_X]));
-		yView.setText("Ay = " +  String.format("%.2f", ay) + "     Range = " +  String.format("%.2f", aMins[SensorManager.DATA_Y]) + " to " +  String.format("%.2f", aMaxs[SensorManager.DATA_Y]));
-		zView.setText("Az = " +  String.format("%.2f", az) + "     Range = " +  String.format("%.2f", aMins[SensorManager.DATA_Z]) + " to " +  String.format("%.2f", aMaxs[SensorManager.DATA_Z]));
+		if(time == now){
+			float[] vals = {event.values[SensorManager.DATA_X], event.values[SensorManager.DATA_Y], event.values[SensorManager.DATA_Z]};
+			tempVals.add(vals);
+		}else{
+			Second thisSecond = new Second(tempVals);
+			seconds.add(thisSecond);
+			tempVals.clear();
+			now = time;
+			aveCount ++;
+			curValView.setText("Current Value: "+ thisSecond.total);
+			countView.setText("Count: "+ aveCount);
+			aveValView.setText("Ave Value: " + (aveVal/20));
+			if(aveCount == 20){
+				Toast.makeText(this, "90 Seconds", Toast.LENGTH_LONG);
+			}
+			if(aveCount > 20){
+				if(thisSecond.total > (aveVal/20)){
+					mp.start();
+				}
+			}else{
+				aveVal = aveVal + thisSecond.total;
+			}
+		}
+		
+		timeValView.setText("Time: " + time);
+		
 	}
 }

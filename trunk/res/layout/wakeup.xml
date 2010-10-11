@@ -13,10 +13,11 @@
 	
 
 	
-<LinearLayout android:id="@+id/LinearLayout02" android:layout_gravity="fill" android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical"><TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/xView" android:textColor="#ffffffff" android:textSize="28sp"></TextView>
-<TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/yView" android:textColor="#ffffffff" android:textSize="28sp"></TextView>
-<TextView android:text="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/zView" android:textColor="#ffffffff" android:textSize="28sp"></TextView>
-</LinearLayout><LinearLayout android:id="@+id/LinearLayout01"
+<LinearLayout android:id="@+id/LinearLayout02" android:layout_gravity="fill" android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical">
+
+<TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/rView"></TextView><TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/tView"></TextView>
+
+<TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/fView"></TextView><TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/cView"></TextView></LinearLayout><LinearLayout android:id="@+id/LinearLayout01"
 		android:layout_width="wrap_content" android:layout_marginBottom="5dp" android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:layout_height="wrap_content">
 		
 	<elements.IntentButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="center" android:gravity="center_horizontal|center"></elements.IntentButton></LinearLayout>

@@ -58,7 +58,12 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
         
-        int  w = sharedPrefs.getInt("alarm_window", 0);
+        int w = 0;
+        try{
+        	w = sharedPrefs.getInt("alarm_window", 0);
+        }catch(Exception e){
+        	w = 0;
+        }
         try{
         	s.setSelection(w);
         }catch (Exception e){
