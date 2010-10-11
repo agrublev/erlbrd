@@ -5,8 +5,7 @@ import java.util.*;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.hardware.*;
 import android.media.*;
 import android.os.AsyncTask;
@@ -28,6 +27,9 @@ public class WakeUp extends Activity implements SensorEventListener{
 	private TextView xView;
 	private TextView yView;
 	private TextView zView;
+	
+	private float[] aMins = {Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE};
+	private float[] aMaxs = {Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
