@@ -163,8 +163,11 @@ public class AlarmClock extends Activity {
 				SAXReader reader = new SAXReader();
 				Document document = reader.read(url.openStream());
 				condition = "";
+				condition += document.selectSingleNode("/xml_api_reply/weather/forecast_information/city/@data").getStringValue() + "\n";
 				condition += document.selectSingleNode("/xml_api_reply/weather/current_conditions/condition/@data").getStringValue();
-				condition += " and " + document.selectSingleNode("/xml_api_reply/weather/current_conditions/temp_f/@data").getStringValue() + " degrees";
+				condition += ", " + document.selectSingleNode("/xml_api_reply/weather/current_conditions/temp_f/@data").getStringValue() + " degrees";
+				condition += "\n Tomorrow " + document.selectSingleNode("/xml_api_reply/weather/forecast_conditions/low/@data").getStringValue() + "/";
+				condition += document.selectSingleNode("/xml_api_reply/weather/forecast_conditions/high/@data").getStringValue();
 				return null;
 			} catch (Exception e) {
 				return e;
