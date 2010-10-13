@@ -47,13 +47,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 	}
 
-	/*
-	 * public void alarmWindow(int c) { // set the timeout // this will stop
-	 * this function in 30 minutes long in30Minutes = c * 60 * 1000; Timer timer
-	 * = new Timer(); timer.schedule( new TimerTask(){ public void run() { if
-	 * (alarmHasGoneOff == false) { runAlarm(); } } }, in30Minutes );
-	 * runAlarm(); // do the work... }
-	 */
+	
 	public void runAlarm() {
 		//Toast.makeText(ctx, "Alarm has gone off!", Toast.LENGTH_LONG).show();
 	    Intent i = new Intent(ctx, WakeUp.class); 

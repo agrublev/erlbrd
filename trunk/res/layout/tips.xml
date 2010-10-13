@@ -20,19 +20,25 @@
 			android:shadowColor="#09586d" android:textSize="42sp"></TextView>
 		<TextView android:layout_height="wrap_content" android:id="@+id/textViewTips"
 			android:text="1. Make sure your phone is plugged in throughout the night."
-			android:textColor="#FFFFFF" android:textSize="12sp"
+			android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d"
 			android:layout_width="fill_parent" android:width="200dp"
-			android:padding="15dp"></TextView>
+			android:padding="15dp" android:textSize="18sp"></TextView>
 		<TextView android:layout_height="wrap_content" android:id="@+id/textViewTips"
-			android:textColor="#FFFFFF" android:textSize="12sp"
+			android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d"
 			android:layout_width="fill_parent" android:width="200dp"
 			android:padding="15dp"
-			android:text="2. Be sure to have your phone at the right volume before you go to sleep."></TextView>
+			android:text="2. Be sure to have your phone at the right volume before you go to sleep." android:textSize="18sp"></TextView>
 		<TextView android:layout_height="wrap_content" android:id="@+id/textViewTips"
-			android:textColor="#FFFFFF" android:textSize="12sp"
+			android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d"
 			android:layout_width="fill_parent" android:width="200dp"
 			android:padding="15dp"
-			android:text="3. Do not put the phone under your pillow. Place it at the top corner of your bed."></TextView>
+			android:text="3. Do not put the phone under your pillow. Place it at the top corner of your bed." android:textSize="18sp"></TextView>
 	</LinearLayout>
 	
 <LinearLayout android:id="@+id/LinearLayout01"

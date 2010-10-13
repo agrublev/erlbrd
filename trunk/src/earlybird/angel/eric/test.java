@@ -94,4 +94,10 @@ public class test extends Activity implements OnClickListener, SensorListener, M
 		mSoundManager.playSound(1);
 	}
 
+	@Override
+	protected void onPause() {
+		dataReader.removeMaxIncreaseListener(this);
+		super.onPause();
+	}
+
 }

@@ -19,36 +19,60 @@
 
 
 
-	</LinearLayout>
+	
+</LinearLayout>
+	
+	<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Place phone at corner of bed, click Start Calibration and roll around a few times!"
+		android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d" android:textSize="18sp" android:padding="5dp"></TextView>
 	<Button android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:text="Start Calibration"
-		android:id="@+id/startCalibration" android:textSize="32sp" android:layout_gravity="top|center_horizontal|center" android:padding="15dp" android:background="#3eed27"></Button>
+		android:id="@+id/startCalibration" android:textSize="32sp"
+		android:layout_gravity="top|center_horizontal|center" android:padding="15dp"
+		android:background="#3eed27"></Button>
+
 	<Button android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:layout_gravity="top|center_horizontal|center" android:id="@+id/stopCalibration"
-		android:text="Stop" android:textSize="22sp" android:background="#f65959" android:padding="5dp" android:layout_marginTop="15dp"></Button>
+		android:layout_height="wrap_content" android:layout_gravity="top|center_horizontal|center"
+		android:id="@+id/stopCalibration" android:text="Stop"
+		android:textSize="22sp" android:background="#f65959" android:padding="5dp"
+		android:layout_marginTop="15dp"></Button>
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:textColor="#FFFFFF"
-		android:textSize="24sp" android:id="@+id/max_label" android:text="maximum"></TextView>
+		android:textSize="24sp" android:id="@+id/max_label" android:text="maximum"
+		android:visibility="invisible"></TextView>
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:textColor="#FFFFFF"
-		android:textSize="24sp" android:text="minimum" android:id="@+id/min_label"></TextView>
+		android:textSize="24sp" android:text="minimum" android:id="@+id/min_label"
+		android:visibility="invisible"></TextView>
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:textColor="#FFFFFF"
-		android:textSize="24sp" android:id="@+id/d_label" android:text="Delta"></TextView>
+		android:textSize="24sp" android:id="@+id/d_label" android:text="Delta"
+		android:visibility="invisible"></TextView>
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/z_label"
-		android:textColor="#FFFFFF" android:textSize="24sp" android:text="label z"></TextView>
+		android:textColor="#FFFFFF" android:textSize="24sp" android:text="label z"
+		android:visibility="invisible"></TextView>
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/y_label"
-		android:textColor="#FFFFFF" android:textSize="24sp" android:text="label y"></TextView>
+		android:textColor="#FFFFFF" android:textSize="24sp" android:text="label y"
+		android:visibility="invisible"></TextView>
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/x_label"
-		android:textColor="#FFFFFF" android:textSize="24sp" android:text="label x"></TextView>
+		android:textColor="#FFFFFF" android:textSize="24sp" android:text="label x"
+		android:visibility="invisible"></TextView>
 	<LinearLayout android:id="@+id/LinearLayout01"
-		android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal|center" android:layout_marginBottom="5dp">
-		<elements.IntentButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="center" android:gravity="center_horizontal|center"></elements.IntentButton>
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal|center"
+		android:layout_marginBottom="5dp">
+		<elements.IntentButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/backButton"
+			android:background="@drawable/back" android:layout_gravity="center"
+			android:gravity="center_horizontal|center"></elements.IntentButton>
 	</LinearLayout>
+
 
 
 
