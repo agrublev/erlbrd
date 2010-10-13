@@ -1,19 +1,26 @@
 package earlybird.angel.eric;
 
-import java.util.*;
+import java.util.Calendar;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.*;
-import android.content.SharedPreferences.*;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.*;
-import android.text.*;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
-import android.widget.AdapterView.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class AlarmSettings extends Activity implements OnClickListener, OnItemSelectedListener {
 	private TextView mTimeDisplay;
@@ -35,6 +42,7 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alarm); 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
         editor = sharedPrefs.edit();
@@ -57,13 +65,13 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
                 this, R.array.time_windows, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-        
         int w = 0;
-        try{
+        try {
         	w = sharedPrefs.getInt("alarm_window", 0);
-        }catch(Exception e){
+        } catch (Exception e) {
         	w = 0;
         }
+        
         try{
         	s.setSelection(w);
         }catch (Exception e){
@@ -149,7 +157,10 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
 	        View view, int pos, long id) {
 	      /*Toast.makeText(parent.getContext(), "The window is " +
 	         pos, Toast.LENGTH_LONG).show();*/
-	        editor.putInt("alarm_window", pos);
+	        try{editor.putInt("alarm_window", pos);
+	        }catch (Exception e){
+	        	editor.putInt("alarm_window", 0);
+	        }
 	        editor.commit();
 	    }
 
@@ -157,5 +168,10 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
 	      // Do nothing.
 	    }
 	}
+	@Override 
+    public void onConfigurationChanged(Configuration newConfig) { 
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		super.onConfigurationChanged(newConfig); 
+    }
 
 }

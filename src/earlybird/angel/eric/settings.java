@@ -68,7 +68,6 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
     public class ButtonClicked implements OnClickListener{
     	private Boolean isBackButton = false;
     	
-		@Override
 		public void onClick(View context) {
 			if(isBackButton){
 				onBackPressed();
@@ -83,23 +82,19 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
     }
 
     // Zip Code Listener
-	@Override
 	public void afterTextChanged(Editable arg0) {
 		Editable zip = zipCodeInput.getText();
         editor.putString("zip_code", zip.toString());
         editor.commit();
 	}
 
-	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count, int after) {	
 	}
 
-	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 	}	
 	
 	// Alarm Listener
-	@Override
 	public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
 		if(spinnerInitialized){  // Prevent sound from playing onCreate
 	            String[] soundFile = getResources().getStringArray(R.array.alarm_sound_values);
@@ -116,7 +111,6 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
             }
 	}
 
-	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		

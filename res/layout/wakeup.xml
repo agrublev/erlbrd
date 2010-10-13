@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:background="@drawable/background_ray">
-	<TextView android:layout_height="wrap_content"
+	android:orientation="horizontal" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@drawable/good_morning">
+	<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_marginBottom="5dp" android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:layout_height="wrap_content">
+		
+	<elements.IntentButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="top|right" android:gravity="top|right" android:layout_marginTop="10dp"></elements.IntentButton></LinearLayout><TextView android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal" android:paddingTop="5dp"
 			android:paddingBottom="10dp" android:cursorVisible="true"
 			android:layout_width="fill_parent" android:id="@+id/settingsTitle"
 			android:paddingLeft="15dp" android:shadowDx="-1.0"
 			android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
-			android:shadowColor="#09586d" android:textSize="42sp" android:text="Alarm"></TextView>
+			android:shadowColor="#09586d" android:textSize="42sp" android:text="Alarm" android:visibility="invisible"></TextView>
 
 	
 
 	
 <LinearLayout android:id="@+id/LinearLayout02" android:layout_gravity="fill" android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical">
 
-<TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/rView"></TextView><TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/tView"></TextView>
+<TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/rView" android:visibility="invisible"></TextView><TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/tView" android:visibility="invisible"></TextView>
 
-<TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/fView"></TextView><TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/cView"></TextView></LinearLayout><LinearLayout android:id="@+id/LinearLayout01"
-		android:layout_width="wrap_content" android:layout_marginBottom="5dp" android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:layout_height="wrap_content">
-		
-	<elements.IntentButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="center" android:gravity="center_horizontal|center"></elements.IntentButton></LinearLayout>
+<TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/fView" android:visibility="invisible"></TextView><TextView android:text="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffffff" android:textSize="28sp" android:id="@+id/cView" android:visibility="invisible"></TextView></LinearLayout>
 
 </LinearLayout>

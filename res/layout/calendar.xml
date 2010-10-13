@@ -3,19 +3,36 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:background="@drawable/background_ray">
 	<TextView android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal" android:paddingTop="5dp"
-			android:paddingBottom="10dp" android:cursorVisible="true"
-			android:layout_width="fill_parent" android:id="@+id/settingsTitle"
-			android:text="Calendar" android:paddingLeft="15dp" android:shadowDx="-1.0"
-			android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
-			android:shadowColor="#09586d" android:textSize="42sp"></TextView>
+		android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+		android:paddingBottom="10dp" android:cursorVisible="true"
+		android:layout_width="fill_parent" android:id="@+id/settingsTitle"
+		android:text="Calendar" android:paddingLeft="15dp" android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d" android:textSize="42sp"></TextView>
 
+
+
+
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/full_version"
+		android:text="There is no calendar view in the Lite version of this app. Here you would usually see a calendar with all the days you slept and a nice graph showing you the quality of sleep you recieved. Please click below to purchase full version!"
+		android:layout_marginTop="20dp" android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp" android:shadowDx="-1.0"
+		android:shadowDy="-1.0" android:shadowRadius="0.3" android:textColor="#FFFFFF"
+		android:shadowColor="#09586d" android:textSize="18sp"></TextView>
+	<ImageView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/buyApp"
+		android:background="@drawable/buy_app" android:layout_marginBottom="25dp" android:layout_marginTop="70dp"></ImageView>
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="wrap_content" android:layout_marginBottom="5dp"
+		android:gravity="bottom|center" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal">
+		<elements.IntentButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/backButton"
+			android:background="@drawable/back" android:layout_gravity="center"
+			android:gravity="center_horizontal|center"></elements.IntentButton>
 	
 
-	
-<LinearLayout android:id="@+id/LinearLayout01"
-		android:layout_width="wrap_content" android:layout_marginBottom="5dp" android:gravity="bottom|center" android:layout_height="fill_parent" android:layout_gravity="center_horizontal">
-		<elements.IntentButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:id="@+id/backButton" android:background="@drawable/back" android:layout_gravity="center" android:gravity="center_horizontal|center"></elements.IntentButton>
-	</LinearLayout>
 </LinearLayout>
+
+	</LinearLayout>

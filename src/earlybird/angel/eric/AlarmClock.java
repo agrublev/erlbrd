@@ -14,11 +14,16 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.media.*;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
+import android.widget.DigitalClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,22 +37,29 @@ public class AlarmClock extends Activity {
 	private MediaPlayer mp;
 	private int winPos;
 	private String timeWindow;
-
+	private PowerManager.WakeLock wl;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fullscreen); 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        PowerManager pm = (PowerManager) getSystemService(AlarmClock.POWER_SERVICE);
+        wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "FullScreen");
+        wl.acquire();
+
         
         //PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
         String timeStamp = sharedPrefs.getString("alarm_time", "");
-        winPos = sharedPrefs.getInt("alarm_window", 0);
-        
+        try{winPos = sharedPrefs.getInt("alarm_window", 0);
+        }catch(Exception e){
+        	winPos = 30;
+        }
         String[] timeWindows = getResources().getStringArray(R.array.time_windows_values);
         timeWindow = timeWindows[winPos];
         
-        Toast.makeText(this, "Window is"+ timeWindow, Toast.LENGTH_LONG).show();
         zipCode = sharedPrefs.getString("zip_code", "");
         
         currentConditionsTextView = (TextView) findViewById(R.id.currentConditionsTextView);
@@ -81,6 +93,12 @@ public class AlarmClock extends Activity {
 		}
 	}
 	
+	@Override
+	protected void onPause() {
+		try{wl.release();}catch (Exception e) { Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show(); }
+		super.onPause();
+	}
+
 	public void soundAlarm(){
 		mp.start();
 	}
@@ -102,6 +120,14 @@ public class AlarmClock extends Activity {
 		long newTime = cali.getTimeInMillis() - ((Long.parseLong(w)*1000)*60) ;
 
 		cali.setTimeInMillis(newTime);
+		if (cali.before(calz)) {
+	        dom = calz.get(Calendar.DAY_OF_MONTH + 1);
+
+			ne = year + "-" + dom + "-" + month + "-" + s;
+			date = sdf.parse(ne);
+			newTime = cali.getTimeInMillis() - ((Long.parseLong(w)*1000)*60) ;
+			cali.setTime(date);
+		}
 	    return cali;
 	  }
 	
@@ -124,7 +150,7 @@ public class AlarmClock extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			currentConditionsTextView.setText("Updating weather...");
+			currentConditionsTextView.setText("Loading the weather...");
 			super.onPreExecute();
 		}
 
@@ -138,14 +164,7 @@ public class AlarmClock extends Activity {
 				Document document = reader.read(url.openStream());
 				condition = "";
 				condition += document.selectSingleNode("/xml_api_reply/weather/current_conditions/condition/@data").getStringValue();
-				condition += " and " + document.selectSingleNode("/xml_api_reply/weather/current_conditions/temp_f/@data").getStringValue()
-						+ " degrees.";
-				condition += "\nToday's Range: "
-						+ document.selectSingleNode("/xml_api_reply/weather/forecast_conditions[1]/low/@data").getStringValue() + " to "
-						+ document.selectSingleNode("/xml_api_reply/weather/forecast_conditions[1]/high/@data").getStringValue()
-						+ " degrees";
-
-
+				condition += " and " + document.selectSingleNode("/xml_api_reply/weather/current_conditions/temp_f/@data").getStringValue() + " degrees";
 				return null;
 			} catch (Exception e) {
 				return e;
@@ -162,5 +181,10 @@ public class AlarmClock extends Activity {
 		}
 
 	}
-	
+	@Override 
+    public void onConfigurationChanged(Configuration newConfig) { 
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		super.onConfigurationChanged(newConfig); 
+    }
+
 }
