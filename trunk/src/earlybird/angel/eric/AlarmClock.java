@@ -46,7 +46,7 @@ public class AlarmClock extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         PowerManager pm = (PowerManager) getSystemService(AlarmClock.POWER_SERVICE);
-        wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "FullScreen");
+        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "FullScreen");
         wl.acquire();
 
         
