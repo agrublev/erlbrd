@@ -94,7 +94,11 @@ public class AlarmClock extends Activity {
 	
 	@Override
 	protected void onPause() {
-		try{wl.release();}catch (Exception e) { Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show(); }
+		try{
+			wl.release();
+		} catch (Exception e) { 
+			//Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show(); 
+		}
 		super.onPause();
 	}
 
