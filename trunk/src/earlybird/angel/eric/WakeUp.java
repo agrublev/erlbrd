@@ -63,6 +63,10 @@ public class WakeUp extends Activity implements SensorEventListener, OnClickList
 	        
 	       PowerManager pm = (PowerManager) getSystemService(AlarmClock.POWER_SERVICE);
 	        wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "FullScreen");
+	        //This will start the screen and not let you turn it off!
+//	        Calendar nowTime = Calendar.getInstance();
+//	        
+//	        pm.userActivity(nowTime.getTimeInMillis(), false);
 	        wl.acquire();
 	        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this); 
 	        try{
