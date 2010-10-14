@@ -68,7 +68,6 @@ public class AlarmClock extends Activity {
         Calendar cal2 = Calendar.getInstance();
         try {
 			cal2 = dateString2Calendar(timeStamp, timeWindow);
-			Toast.makeText(AlarmClock.this, "test: " + cal2.HOUR + ":" + cal2.MINUTE, Toast.LENGTH_LONG).show();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -179,11 +178,11 @@ public class AlarmClock extends Activity {
 		protected void onPostExecute(Exception result) {
 			if (result == null) {
 				currentConditionsTextView.setText(condition);
-			} else
-				Toast.makeText(AlarmClock.this, result.getMessage(), Toast.LENGTH_LONG).show();
+			} 
 		}
 
 	}
+		
 	@Override 
     public void onConfigurationChanged(Configuration newConfig) { 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

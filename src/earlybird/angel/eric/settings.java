@@ -51,7 +51,11 @@ public class settings extends Activity implements OnClickListener, TextWatcher, 
    
         
         soundFile = getResources().getStringArray(R.array.alarm_sound_values);
-        sound = getResources().getIdentifier(soundFile[sharedPrefs.getInt("alarm_sound", 0)], "raw","earlybird.angel.eric");
+        try{
+        	sound = getResources().getIdentifier(soundFile[sharedPrefs.getInt("alarm_sound", 0)], "raw","earlybird.angel.eric");
+        }catch(Exception e){
+        	sound = getResources().getIdentifier(soundFile[0], "raw","earlybird.angel.eric");
+        }
         mp = MediaPlayer.create(settings.this, sound);
         
         Button backButton = (Button) findViewById(R.id.backButton);

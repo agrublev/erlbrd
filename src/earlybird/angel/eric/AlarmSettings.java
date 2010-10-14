@@ -48,7 +48,11 @@ public class AlarmSettings extends Activity implements OnClickListener, OnItemSe
         editor = sharedPrefs.edit();
         
         String[] alarmNames = getResources().getStringArray(R.array.alarm_sounds);
+        try{
         alarmSoundName = alarmNames[sharedPrefs.getInt("alarm_sound", 0)];
+        }catch(Exception e){
+        	alarmSoundName = alarmNames[0];
+        }
         TextView currentSong = (TextView) findViewById(R.id.currentSong);
         currentSong.setText(alarmSoundName);
         

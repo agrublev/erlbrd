@@ -109,11 +109,15 @@ public class DigitalClock extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-
-        Typeface face=Typeface.createFromAsset(getContext().getAssets(), "fonts/ds.ttf");  
         
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
-        mTimeDisplay.setTypeface(face);
+        try{
+        	Typeface face=Typeface.createFromAsset(getContext().getAssets(), "fonts/ds.ttf");  
+        	mTimeDisplay.setTypeface(face);
+        }catch(Exception e){
+        	 
+        }
+          
         //mTimeDisplay.setTypeface(tf);
         mAmPm = new AmPm(this);
         mCalendar = Calendar.getInstance();
